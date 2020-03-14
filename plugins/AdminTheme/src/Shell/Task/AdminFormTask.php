@@ -33,7 +33,7 @@ class AdminFormTask extends SimpleBakeTask
 	{
 		// dd($this->args[0]);
 		$this->controllerName = $this->args[0];
-		$this->modelName = 'Members';
+		$this->modelName = ucfirst($this->args[0]);
 		$vars = $this->_loadController();
 
 		return $vars;
