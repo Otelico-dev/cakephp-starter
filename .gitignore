@@ -6,6 +6,8 @@
 /tmp/*
 /vendor/*
 /webroot/images/*
+/webroot/assets/admin/dist/*
+/webroot/assets/public/dist/*
 
 # OS generated files #
 ######################
