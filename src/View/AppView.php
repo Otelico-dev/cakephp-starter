@@ -39,5 +39,6 @@ class AppView extends View
 	public function initialize()
 	{
 		$this->loadHelper('DtReorder');
+		$this->loadHelper('Form', ['className' => 'AdminTheme.AdminForm']);
 	}
 }

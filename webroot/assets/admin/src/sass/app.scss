@@ -1,16 +1,33 @@
 @charset 'utf-8';
 
+// $theme-colors: (primary: #007bff,
+//     secondary: #6c757d,
+//     success: #28a745,
+//     info: #17a2b8,
+//     warning: #ffc107,
+//     danger: #dc3545,
+//     light:#f8f9fa,
+//     dark: #343a40);
+
+$theme-colors: (primary: #6872f9,
+    secondary: #6c757d,
+    success: #8bae2b,
+    info: #17a2b8,
+    warning: #ffc107,
+    danger: #d91023,
+    light:#f8f9fa,
+    dark: #343a40);
+
 @import 'bootstrap';
+
 // Layout
 @import 'header';
 @import 'sidebar';
 @import 'footer';
 
-
 // Modules
 @import 'login';
 
-
 // General
-@import 'forms';
+// @import 'forms';
 @import 'datatables';

@@ -10,7 +10,7 @@ const pluginsCss = [
 
     config.vendorDir + '/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css',
     config.vendorDir + '/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
-    // config.vendorDir + '/datatables.net-bs4/css/dataTables.bootstrap4.min.css'
+    config.vendorDir + '/datatables.net-bs4/css/dataTables.bootstrap4.min.css'
 
 ];
 
