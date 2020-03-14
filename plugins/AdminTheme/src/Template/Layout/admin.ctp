@@ -11,7 +11,10 @@
 	<?= $this->fetch('meta') ?>
 
 	<?= $this->Html->css('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); ?>
+
+
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/w/bs4/dt-1.10.18/datatables.min.css" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.6/css/rowReorder.dataTables.min.css">
 
 	<?= $this->Html->css('/assets/admin/dist/css/app') ?>
 	<?= $this->fetch('css') ?>
@@ -40,6 +43,7 @@
 	</footer>
 	<?= $this->Html->script('/assets/admin/dist/js/app') ?>
 	<?= $this->DataTables->setJs() ?>
+	<?= $this->fetch('script') ?>
 </body>
 
 </html>
