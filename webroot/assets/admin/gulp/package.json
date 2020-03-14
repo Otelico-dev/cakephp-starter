@@ -1,0 +1,69 @@
+{
+    "name": "themebuilder",
+    "version": "1.0.0",
+    "description": "",
+    "main": "gulpfile.js",
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "dependencies": {
+        "@fancyapps/fancybox": "^3.5.7",
+        "bootstrap": "^4.4.1",
+        "bootstrap-switch": "^3.3.4",
+        "datatables.net-rowreorder-bs": "^1.2.6",
+        "jquery": "^3.3.1",
+        "jquery-sortable": "^0.9.13",
+        "jquery.easing": "^1.4.1",
+        "sweetalert2": "^9.0.2"
+    },
+    "overrides": {
+        "bootstrap": [],
+        "bootstrap-switch": {
+            "style": "dist/boostrap3/boostrap-switch.min.css"
+        }
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.7.4",
+        "@babel/core": "^7.7.4",
+        "@babel/polyfill": "^7.7.0",
+        "@babel/preset-env": "^7.7.4",
+        "@babel/register": "^7.7.4",
+        "autoprefixer": "^9.7.2",
+        "browser-sync": "^2.26.7",
+        "compass-importer": "^0.4.1",
+        "cssnano": "^4.1.10",
+        "del": "^5.1.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^7.0.1",
+        "gulp-cache": "^1.1.3",
+        "gulp-concat": "^2.6.1",
+        "gulp-debug": "^4.0.0",
+        "gulp-eslint": "^6.0.0",
+        "gulp-if": "^3.0.0",
+        "gulp-imagemin": "^6.2.0",
+        "gulp-load-plugins": "^2.0.1",
+        "gulp-main-node-files": "^1.1.1",
+        "gulp-postcss": "^8.0.0",
+        "gulp-prompt": "^1.2.0",
+        "gulp-rsync": "0.0.8",
+        "gulp-sass": "^4.0.2",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-svgmin": "^2.2.0",
+        "gulp-terser": "^1.2.0",
+        "gulp-touch": "^1.0.1",
+        "gulp-uglify": "^3.0.2",
+        "imagemin-giflossy": "^5.1.10",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-pngquant": "^8.0.0",
+        "imagemin-zopfli": "^6.0.0",
+        "modularscale-sass": "^3.0.10",
+        "through2": "^3.0.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+}
