@@ -53,9 +53,13 @@ class AppController extends Controller
 
 		//$this->loadComponent('Security');
 
-		$this->loadComponent('CakeDC/Users.UsersAuth');
+		// $this->loadComponent('CakeDC/Users.UsersAuth');
 
-		$this->loadComponent('DataTables.DataTables');
+		$this->loadComponent('DataTables.DataTables', [
+			'language' => [
+				'url' => '//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json'
+			]
+		]);
 
 		$this->loadComponent('Crud.Crud', [
 			'actions' => [
@@ -70,9 +74,9 @@ class AppController extends Controller
 				'delete' => [
 					'className' => 'Crud.Delete',
 				],
-				// 'reorder' => [
-				// 	'className' => '\App\Crud\Action\ReorderAction',
-				// ],
+				'reorder' => [
+					'className' => '\App\Crud\Action\ReorderAction',
+				],
 			],
 			'listeners' => [
 				'Crud.RelatedModels',
