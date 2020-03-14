@@ -1,0 +1,28 @@
+<p class="text-right">
+	<?= $this->Html->link(
+		'<i class="fa fa-plus"></i> ' . __('New {{ singularHumanName }}'),
+		[
+			'action' => 'add'
+			],
+		[
+			'escape' => false, 
+			'class' => 'btn btn-success btn-lg'
+			]
+	); ?>
+</p>
+
+<div id="clients_index" class="table_wrapper">
+
+	<div class="table-responsive">
+		<?=
+			$this->DataTables->render(
+				'{{ pluralHumanName }}',
+				[
+					'class' => 'table table-striped',
+
+				]
+			)
+		?>
+	</div>
+
+</div>
