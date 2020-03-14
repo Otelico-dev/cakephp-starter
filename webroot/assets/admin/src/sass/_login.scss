@@ -1,0 +1,21 @@
+.body--login {
+    background: #eee;
+}
+
+.container-login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content-login {
+        width: 300px;
+    }
+
+    fieldset {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,16 @@
+.actions {
+    text-align: right;
+
+    a,
+    form {
+        margin: 0 3px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    form {
+        display: inline-block;
+    }
+}
