@@ -39,6 +39,11 @@ class AppView extends View
 	public function initialize()
 	{
 		$this->loadHelper('DtReorder');
-		$this->loadHelper('Form', ['className' => 'AdminTheme.AdminForm']);
+		$this->loadHelper('Form', [
+			'className' => 'AdminTheme.AdminForm',
+			'widgets' => [
+				'datetime' => ['App\View\Widget\DatePickerWidget']
+			]
+		]);
 	}
 }
