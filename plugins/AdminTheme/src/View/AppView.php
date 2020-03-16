@@ -15,9 +15,10 @@
 
 namespace AdminTheme\View;
 
-use Cake\View\View;
-
 use LilHermit\Bootstrap4\View\BootstrapViewTrait;
+use Cake\View\View;
+use AdminTheme\View\Widget\DatePickerWidget;
+// use AdminTheme\View\Widget\ComboboxWidget;
 
 /**
  * Application View
@@ -40,10 +41,21 @@ class AppView extends View
 	 */
 	public function initialize()
 	{
-		parent::initialize();
+		//parent::initialize();
 
-		$this->initializeBootstrap();
+		$this->loadHelper('Html', ['className' => 'LilHermit/Bootstrap4.Html']);
+		$this->loadHelper('Flash', ['className' => 'LilHermit/Bootstrap4.Flash']);
+		$this->loadHelper('Form', [
+			'className' => 'AdminTheme.AdminForm'
+		]);
+
+		$this->loadHelper('Paginator', ['className' => 'LilHermit/Bootstrap4.Paginator']);
+
 		$this->loadHelper('AdminTheme.Configure');
 		$this->loadHelper('DataTables.DataTables');
+		$this->loadHelper('AdminTheme.DtReorder');
+
+		$datePickerWidget = new DatePickerWidget($this->Form->templater());
+		$this->Form->addWidget('datepicker', $datePickerWidget);
 	}
 }

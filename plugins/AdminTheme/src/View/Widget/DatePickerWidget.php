@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Widget;
+namespace AdminTheme\View\Widget;
 
 use Cake\Core\Configure;
 use Cake\Database\Type;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\View\Helper;
+namespace AdminTheme\View\Helper;
 
 use Cake\View\Helper;
 

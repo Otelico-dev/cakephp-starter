@@ -2,13 +2,14 @@
 
 namespace AdminTheme\View\Helper;
 
-use Cake\View\Helper\FormHelper;
-
+// use Cake\View\Helper\FormHelper;
+use LilHermit\Bootstrap4\View\Helper\FormHelper;
 
 class AdminFormHelper extends FormHelper
 {
 	public function postLink($title, $url = null, array $options = [])
 	{
+
 		$options += ['block' => null, 'confirm' => null];
 
 		$requestMethod = 'POST';
