@@ -45,11 +45,11 @@ class DatePickerWidget implements WidgetInterface
             >
             <input
                 type="text"
-                class="form-control datepicker"
+                class="form-control datepicker datedropper-init"
                 name="$name"
                 value="$val"
                 id="$id"
-                data-value="$val"                
+                data-value="$val"    
 html;
 
 
