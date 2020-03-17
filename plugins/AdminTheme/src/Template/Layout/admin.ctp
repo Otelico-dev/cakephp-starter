@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/w/bs4/dt-1.10.18/datatables.min.css" />
 	<link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.6/css/rowReorder.dataTables.min.css">
 
-	<?= $this->Html->css('/assets/admin/dist/css/app') ?>
+	<?= $this->Html->css('/admin_theme/assets/dist/css/app') ?>
 	<?= $this->fetch('css') ?>
 
 </head>
@@ -24,11 +24,11 @@
 <body>
 	<header>
 		<div class="container-fluid">
-			<?= $this->Element('Layout/Admin/header') ?>
+			<?= $this->Element('AdminTheme.Layout/Admin/header') ?>
 		</div>
 	</header>
 	<aside>
-		<?= $this->Element('Layout/Admin/sidebar') ?>
+		<?= $this->Element('AdminTheme.Layout/Admin/sidebar') ?>
 	</aside>
 
 	<main class="container-fluid">
@@ -39,9 +39,9 @@
 	</main>
 
 	<footer>
-		<?= $this->Element('Layout/Admin/footer') ?>
+		<?= $this->Element('AdminTheme.Layout/Admin/footer') ?>
 	</footer>
-	<?= $this->Html->script('/assets/admin/dist/js/app') ?>
+	<?= $this->Html->script('/admin_theme/assets/dist/js/app') ?>
 	<?= $this->DataTables->setJs() ?>
 	<?= $this->fetch('script') ?>
 </body>

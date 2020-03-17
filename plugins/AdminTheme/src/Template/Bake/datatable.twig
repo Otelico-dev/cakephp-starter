@@ -4,7 +4,7 @@ foreach($results as $result) {
 
 	$this->DataTables->prepareData([
 		$result->id,
-		$this->Element('AdminTheme.link_modify', [
+		$this->Element('AdminTheme.Actions/link_modify', [
             'params' => [
                 'url' => [
                     'action' => 'edit',
@@ -12,7 +12,7 @@ foreach($results as $result) {
                 ]
             ]
         ]).
-		$this->Element('AdminTheme.link_delete', [
+		$this->Element('AdminTheme.Actions/link_delete', [
 			'params' => [
 				'url' => [
 					'action' => 'delete',
