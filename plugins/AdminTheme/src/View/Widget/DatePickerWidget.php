@@ -41,11 +41,11 @@ class DatePickerWidget implements WidgetInterface
 
 		$widget = <<<html
             <div 
-            class="input-group $type"
+            class="input-group"
             >
             <input
                 type="text"
-                class="form-control datepicker datedropper-init"
+                class="form-control datepicker"
                 name="$name"
                 value="$val"
                 id="$id"
@@ -57,8 +57,8 @@ html;
                     $required
                     $disabled
                 />
-                <label for="$id" class="input-group-addon">
-                    <span class="glyphicon glyphicon-$icon"></span>
+                <label for="$id" class="input-group-append">
+                    <span class="input-group-text fa fa-$icon"></span>
                 </label>
             </div>
 html;

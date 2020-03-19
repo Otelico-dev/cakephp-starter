@@ -19,6 +19,8 @@
         "jquery": "^3.3.1",
         "jquery-sortable": "^0.9.13",
         "jquery.easing": "^1.4.1",
+        "pickadate": "^3.6.2",
+        "selectize": "^0.12.6",
         "sweetalert2": "^9.0.2"
     },
     "overrides": {

@@ -4,16 +4,7 @@ const plugins = require('gulp-load-plugins')()
 const pluginConfig = require('../plugin-config')
 const mainNodeFiles = require('gulp-main-node-files');
 // const terser = require('gulp-terser');
-const pluginJs = mainNodeFiles({
-    order: {
-        'jquery': 1
-    },
-    overrides: {
-        'bootstrap': [
-            // "dist/js/bootstrap.js"
-        ]
-    }
-});
+const pluginJs = mainNodeFiles(pluginConfig.mainFilesConfig);
 
 const scripts = () => {
 
