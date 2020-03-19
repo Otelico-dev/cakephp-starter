@@ -46,7 +46,10 @@ class AppView extends View
 		$this->loadHelper('Html', ['className' => 'LilHermit/Bootstrap4.Html']);
 		$this->loadHelper('Flash', ['className' => 'LilHermit/Bootstrap4.Flash']);
 		$this->loadHelper('Form', [
-			'className' => 'AdminTheme.AdminForm'
+			'className' => 'AdminTheme.AdminForm',
+			'templates' => [
+				'select' => '<select name="{{name}}" class="selectize" {{attrs}}>{{content}}</select>',
+			]
 		]);
 
 		$this->loadHelper('Paginator', ['className' => 'LilHermit/Bootstrap4.Paginator']);
