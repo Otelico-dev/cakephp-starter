@@ -38,7 +38,7 @@ class AppView extends View
 	 */
 	public function initialize()
 	{
-		if ($this->request->prefix == 'admin') {
+		if ($this->request->getParam('prefix') == 'admin') {
 			$this->loadHelper('Form', [
 				'className' => 'AdminTheme.AdminForm',
 
