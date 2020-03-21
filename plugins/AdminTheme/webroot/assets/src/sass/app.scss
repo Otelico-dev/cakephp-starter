@@ -29,5 +29,5 @@ $theme-colors: (primary: #6872f9,
 @import 'login';
 
 // General
-// @import 'forms';
+@import 'app_forms';
 @import 'datatables';
