@@ -59,6 +59,8 @@ Router::scope('/', function (RouteBuilder $routes) {
 	 */
 	$routes->applyMiddleware('csrf');
 
+
+
 	/**
 	 * Here, we are connecting '/' (base path) to a controller called 'Pages',
 	 * its action called 'display', and we pass a param to select the view file
@@ -70,6 +72,26 @@ Router::scope('/', function (RouteBuilder $routes) {
 	 * ...and connect the rest of 'Pages' controller's URLs.
 	 */
 	$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+
+	/**
+	 * i18n routes
+	 */
+	$routes->connect(
+		'/:lang',
+		['controller' => 'Pages', 'action' => 'display', 'home'],
+		['routeClass' => 'ADmad/I18n.I18nRoute']
+	);
+	$routes->connect(
+		'/:controller',
+		['action' => 'index'],
+		['routeClass' => 'ADmad/I18n.I18nRoute']
+	);
+	$routes->connect(
+		'/:controller/:action/*',
+		[],
+		['routeClass' => 'ADmad/I18n.I18nRoute']
+	);
 
 	/**
 	 * Connect catchall routes for all controllers.

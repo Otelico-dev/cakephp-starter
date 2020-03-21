@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b247640b2ca66ba300b6290cd294de6d",
+    "content-hash": "81ced48be62f18703cbe37ff36575506",
     "packages": [
+        {
+            "name": "admad/cakephp-i18n",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ADmad/cakephp-i18n.git",
+                "reference": "31946f864ae0523f0879db0a5e5d5fe194d0b1f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ADmad/cakephp-i18n/zipball/31946f864ae0523f0879db0a5e5d5fe194d0b1f2",
+                "reference": "31946f864ae0523f0879db0a5e5d5fe194d0b1f2",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^3.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.14|^6.0"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ADmad\\I18n\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ADmad",
+                    "homepage": "https://github.com/ADmad",
+                    "role": "Author"
+                }
+            ],
+            "description": "A CakePHP plugin for I18n related tools.",
+            "homepage": "https://github.com/ADmad/cakephp-i18n",
+            "keywords": [
+                "cakephp",
+                "i18n",
+                "messages",
+                "routing",
+                "validation"
+            ],
+            "time": "2019-09-24T12:28:19+00:00"
+        },
         {
             "name": "allanmcarvalho/cakephp-datatables",
             "version": "1.6.0",

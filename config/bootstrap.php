@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -70,10 +71,10 @@ use Cake\Utility\Security;
  * that changes from configuration that does not. This makes deployment simpler.
  */
 try {
-    Configure::config('default', new PhpConfig());
-    Configure::load('app', 'default', false);
+	Configure::config('default', new PhpConfig());
+	Configure::load('app', 'default', false);
 } catch (\Exception $e) {
-    exit($e->getMessage() . "\n");
+	exit($e->getMessage() . "\n");
 }
 
 /*
@@ -88,10 +89,10 @@ try {
  * for a short time.
  */
 if (Configure::read('debug')) {
-    Configure::write('Cache._cake_model_.duration', '+2 minutes');
-    Configure::write('Cache._cake_core_.duration', '+2 minutes');
-    // disable router cache during development
-    Configure::write('Cache._cake_routes_.duration', '+2 seconds');
+	Configure::write('Cache._cake_model_.duration', '+2 minutes');
+	Configure::write('Cache._cake_core_.duration', '+2 minutes');
+	// disable router cache during development
+	Configure::write('Cache._cake_routes_.duration', '+2 seconds');
 }
 
 /*
@@ -116,16 +117,16 @@ ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
  */
 $isCli = PHP_SAPI === 'cli';
 if ($isCli) {
-    (new ConsoleErrorHandler(Configure::read('Error')))->register();
+	(new ConsoleErrorHandler(Configure::read('Error')))->register();
 } else {
-    (new ErrorHandler(Configure::read('Error')))->register();
+	(new ErrorHandler(Configure::read('Error')))->register();
 }
 
 /*
  * Include the CLI bootstrap overrides.
  */
 if ($isCli) {
-    require __DIR__ . '/bootstrap_cli.php';
+	require __DIR__ . '/bootstrap_cli.php';
 }
 
 /*
@@ -135,16 +136,16 @@ if ($isCli) {
  * If you define fullBaseUrl in your config file you can remove this.
  */
 if (!Configure::read('App.fullBaseUrl')) {
-    $s = null;
-    if (env('HTTPS')) {
-        $s = 's';
-    }
+	$s = null;
+	if (env('HTTPS')) {
+		$s = 's';
+	}
 
-    $httpHost = env('HTTP_HOST');
-    if (isset($httpHost)) {
-        Configure::write('App.fullBaseUrl', 'http' . $s . '://' . $httpHost);
-    }
-    unset($httpHost, $s);
+	$httpHost = env('HTTP_HOST');
+	if (isset($httpHost)) {
+		Configure::write('App.fullBaseUrl', 'http' . $s . '://' . $httpHost);
+	}
+	unset($httpHost, $s);
 }
 
 Cache::setConfig(Configure::consume('Cache'));
@@ -165,14 +166,14 @@ Security::setSalt(Configure::consume('Security.salt'));
  * Setup detectors for mobile and tablet.
  */
 ServerRequest::addDetector('mobile', function ($request) {
-    $detector = new \Detection\MobileDetect();
+	$detector = new \Detection\MobileDetect();
 
-    return $detector->isMobile();
+	return $detector->isMobile();
 });
 ServerRequest::addDetector('tablet', function ($request) {
-    $detector = new \Detection\MobileDetect();
+	$detector = new \Detection\MobileDetect();
 
-    return $detector->isTablet();
+	return $detector->isTablet();
 });
 
 /*
@@ -184,13 +185,13 @@ ServerRequest::addDetector('tablet', function ($request) {
  * @link https://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
  */
 Type::build('time')
-    ->useImmutable();
+	->useImmutable();
 Type::build('date')
-    ->useImmutable();
+	->useImmutable();
 Type::build('datetime')
-    ->useImmutable();
+	->useImmutable();
 Type::build('timestamp')
-    ->useImmutable();
+	->useImmutable();
 
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
@@ -201,3 +202,13 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+/**
+ * Configure accepted languages
+ */
+Configure::write('I18n.languages', [
+	'fr' => ['locale' => 'fr_FR', 'name' => 'Français'],
+	'en' => ['locale' => 'en_GB', 'name' => 'English'],
+]);
+
+Configure::write('I18n.defaultLanguage', 'fr');

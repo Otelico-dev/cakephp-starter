@@ -22,6 +22,7 @@ use App\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use App\Middleware\AppI18nMiddleware;
 
 /**
  * Application setup class.
@@ -68,6 +69,8 @@ class Application extends BaseApplication
 			'routes' => false
 		]);
 
+		$this->addPlugin('ADmad/I18n');
+
 		$this->addPlugin('LilHermit/Bootstrap4', ['bootstrap' => true]);
 		$this->addPlugin('AdminTheme');
 		$this->addPlugin('Media', ['routes' => true]);
@@ -98,6 +101,19 @@ class Application extends BaseApplication
 			// using it's second constructor argument:
 			// `new RoutingMiddleware($this, '_cake_routes_')`
 			->add(new RoutingMiddleware($this));
+
+		$middlewareQueue
+			->add(new AppI18nMiddleware([
+				// If `true` will attempt to get matching languges in "languages" list based
+				// on browser locale and redirect to that when going to site root.
+				'detectLanguage' => false,
+				// Default language for app. If language detection is disabled or no
+				// matching language is found redirect to this language
+				'defaultLanguage' =>  Configure::read('I18n.defaultLanguage'),
+				// Languages available in app. The keys should match the language prefix used
+				// in URLs. Based on the language the locale will be also set.
+				'languages' => Configure::read('I18n.languages')
+			]));
 
 		return $middlewareQueue;
 	}
