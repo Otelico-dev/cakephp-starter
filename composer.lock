@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81ced48be62f18703cbe37ff36575506",
+    "content-hash": "eb6c4a7684cb047132f99774ac66012d",
     "packages": [
         {
             "name": "admad/cakephp-i18n",
@@ -500,6 +500,68 @@
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
             "time": "2019-11-12T10:21:19+00:00"
+        },
+        {
+            "name": "dereuromark/cakephp-databaselog",
+            "version": "2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dereuromark/CakePHP-DatabaseLog.git",
+                "reference": "4495f5df85298d5e53b9b270d6ecd95fc67d181b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dereuromark/CakePHP-DatabaseLog/zipball/4495f5df85298d5e53b9b270d6ecd95fc67d181b",
+                "reference": "4495f5df85298d5e53b9b270d6ecd95fc67d181b",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^3.7",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "cakephp/migrations": "@stable",
+                "dereuromark/cakephp-tools": "dev-master",
+                "fig-r/psr2r-sniffer": "dev-master",
+                "friendsofcake/search": "^5.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "DatabaseLog\\": "src/",
+                    "DatabaseLog\\Test\\Fixture\\": "tests/Fixture/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nick Baker",
+                    "homepage": "http://www.webtechnick.com",
+                    "role": "Original author"
+                },
+                {
+                    "name": "Mark Scherer",
+                    "homepage": "https://www.dereuromark.de",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Other contributors",
+                    "homepage": "https://github.com/dereuromark/CakePHP-DatabaseLog/graphs/contributors"
+                }
+            ],
+            "description": "CakePHP DatabaseLog Plugin",
+            "homepage": "https://github.com/dereuromark/CakePHP-DatabaseLog/",
+            "keywords": [
+                "cakephp",
+                "database",
+                "logging",
+                "logs",
+                "plugin"
+            ],
+            "time": "2019-07-22T16:22:56+00:00"
         },
         {
             "name": "dereuromark/cakephp-shim",

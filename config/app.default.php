@@ -324,7 +324,7 @@ return [
 	 */
 	'Log' => [
 		'debug' => [
-			'className' => FileLog::class,
+			'className' => 'DatabaseLog.Database',
 			'path' => LOGS,
 			'file' => 'debug',
 			'url' => env('LOG_DEBUG_URL', null),
@@ -332,7 +332,7 @@ return [
 			'levels' => ['notice', 'info', 'debug'],
 		],
 		'error' => [
-			'className' => FileLog::class,
+			'className' => 'DatabaseLog.Database',
 			'path' => LOGS,
 			'file' => 'error',
 			'url' => env('LOG_ERROR_URL', null),
@@ -340,7 +340,7 @@ return [
 			'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
 		],
 		'404' => [
-			'className' => 'Cake\Log\Engine\FileLog',
+			'className' => 'DatabaseLog.Database',
 			'path' => LOGS,
 			'file' => '404',
 			'url' => env('LOG_ERROR_URL', null),
@@ -348,7 +348,7 @@ return [
 		],
 		// To enable this dedicated query log, you need set your datasource's log flag to true
 		'queries' => [
-			'className' => FileLog::class,
+			'className' => 'DatabaseLog.Database',
 			'path' => LOGS,
 			'file' => 'queries',
 			'url' => env('LOG_QUERIES_URL', null),

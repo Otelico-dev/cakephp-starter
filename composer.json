@@ -12,6 +12,7 @@
         "cakephp/cakephp": "3.8.*",
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
+        "dereuromark/cakephp-databaselog": "^2.7",
         "dereuromark/cakephp-tools": "^1.9",
         "dereuromark/cakephp-whoops": "^0.1.3",
         "friendsofcake/crud": "^5.4",

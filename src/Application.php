@@ -71,6 +71,8 @@ class Application extends BaseApplication
 
 		$this->addPlugin('ADmad/I18n');
 
+		$this->addPlugin('DatabaseLog', ['bootstrap' => true]);
+
 		$this->addPlugin('LilHermit/Bootstrap4', ['bootstrap' => true]);
 		$this->addPlugin('AdminTheme');
 		$this->addPlugin('Media', ['routes' => true]);
