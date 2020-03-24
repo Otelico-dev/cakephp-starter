@@ -11,7 +11,7 @@
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
         "bootstrap": "^4.4.1",
-        "bootstrap-switch": "^3.3.4",
+        "bootstrap4-toggle": "^3.6.1",
         "datatables.net": "^1.10.20",
         "datatables.net-bs4": "^1.10.20",
         "datatables.net-rowreorder": "^1.2.6",
