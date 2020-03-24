@@ -4,6 +4,7 @@
 /config/.env
 /logs/*
 /tmp/*
+/uploads/*
 /vendor/*
 /webroot/images/*
 /webroot/assets/admin/dist/*
