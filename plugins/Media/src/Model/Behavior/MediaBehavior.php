@@ -6,6 +6,9 @@ use Cake\Event\Event;
 use Cake\ORM\Behavior;
 use Cake\ORM\Entity;
 use Cake\ORM\Table;
+use Cake\ORM\Query;
+use Cake\Utility\Hash;
+use ArrayObject;
 
 class MediaBehavior extends Behavior
 {
@@ -30,6 +33,12 @@ class MediaBehavior extends Behavior
 		'uploads_dir' => 'uploads'
 	];
 
+	/**	
+	 * Holds eerors found when uploading files
+	 * @var array
+	 */
+	protected $upload_errors = [];
+
 	/**
 	 * Add HasMany association in table whith this behavior.
 	 * If database table has 'media_id' field, the behavior add belongsTo association
@@ -45,7 +54,16 @@ class MediaBehavior extends Behavior
 	{
 
 		$this->_table->medias = array_merge($this->config, $config);
+
 		$this->_table->hasMany('Media', [
+			'className' => 'Media.Medias',
+			'foreignKey' => 'foreign_key',
+			'order' => 'Media.position ASC',
+			'conditions' => 'model = "' . $this->_table->getAlias() . '"',
+			'dependant' => true
+		]);
+
+		$this->_table->hasMany('MediaFiles', [
 			'className' => 'Media.Medias',
 			'foreignKey' => 'foreign_key',
 			'order' => 'Media.position ASC',
@@ -61,31 +79,103 @@ class MediaBehavior extends Behavior
 		}
 	}
 
+	public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+	{
+
+		if (
+			!empty($this->_config['fields'])
+		) {
+
+			foreach ($this->_config['fields'] as $field) {
+				if (empty($_FILES[$field['name']]['tmp_name'])) {
+					$data[$field['name']] = 'true';
+				}
+			}
+		}
+	}
+
+	public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
+	{
+		if (empty($this->_config['fields'])) {
+			return $query;
+		}
+
+		$fields = $this->_config['fields'];
+		$field_names = Hash::extract($fields, '{n}.name');
+
+		if (empty($field_names)) {
+			return $query;
+		}
+
+		$mapper = function ($row, $key, $mapReduce) use ($fields) {
+
+			if (!empty($row->media_files)) {
+				foreach ($fields as $field) {
+
+					foreach ($row->media_files as $media) {
+
+
+						if ($media->name == $field['name']) {
+
+							$row[$field['name']] = $media;
+						}
+					}
+				}
+			}
+
+			$mapReduce->emitIntermediate($row, $key);
+		};
+
+		$reducer = function ($items, $key, $mapReduce) {
+			if (isset($items[0])) {
+				$mapReduce->emit($items[0], $key);
+			}
+		};
+
+		$query->contain('MediaFiles', function (Query $q) use ($field_names) {
+			return $q->where(['MediaFiles.name IN' => $field_names]);
+		});
+
+		$query->mapReduce($mapper, $reducer);
+
+		return $query;
+	}
+
 	public function beforeSave(Event $event, Entity $entity, \ArrayObject $options)
 	{
 
 		if (
-			isset($this->_config['type'])
-			&& $this->_config['type'] == 'single'
+			!empty($this->_config['fields'])
 		) {
 
-			$field = $this->_config['field'];
 
-			if (empty($entity->{$field}['tmp_name'])) {
-				return true;
+			foreach ($this->_config['fields'] as $field) {
+				$this->checkFileForErrors($field['name']);
 			}
 
-			try {
-
-				$this->_table->media->setFileHandle($entity->{$field});
-
-				$this->_table->media->checkForUploadedFileErrors();
-			} catch (\Exception $e) {
-
-				$entity->setErrors([$field => [$e->getMessage()]]);
-
+			if (!empty($this->upload_errors)) {
+				$entity->setErrors($this->upload_errors);
 				return false;
 			}
+
+			$entity->{$field['name']} = '';
+		}
+
+		return true;
+	}
+
+	protected function checkFileForErrors($field)
+	{
+
+		if (empty($_FILES[$field]['tmp_name'])) {
+			return;
+		}
+
+		try {
+			$this->_table->media->setFileHandle($_FILES[$field]);
+			$this->_table->media->checkForUploadedFileErrors($_FILES[$field]['tmp_name']);
+		} catch (\Exception $e) {
+			$this->upload_errors[$field] = $e->getMessage();
 		}
 	}
 
@@ -100,23 +190,53 @@ class MediaBehavior extends Behavior
 	{
 
 		if (
-			isset($this->_config['type'])
-			&& $this->_config['type'] == 'single'
-			&& !empty($entity->{$this->_config['field']}['tmp_name'])
+			!empty($this->_config['fields'])
 		) {
 
-			try {
+			foreach ($this->_config['fields'] as $field) {
 
-				$media = $this->_table->media->newEntity();
-				$media->ref = strtolower($this->_table->alias());
-				$media->ref_id = $entity->id;
+				if (empty($_FILES[$field['name']]['tmp_name'])) {
+					continue;
+				}
 
-				$this->_table->media->save($media);
-			} catch (\Exception $e) {
+				try {
 
-				throw new \Exception($e->getMessage());
+					$this->saveMedia($entity, $field['name']);
+				} catch (\Exception $e) {
+
+					throw new \Exception($e->getMessage());
+				}
 			}
 		}
+	}
+
+	/**
+	 * Save a media file
+	 * @param String $field_name
+	 */
+	protected function saveMedia(Entity $entity, String $field_name)
+	{
+
+		if (
+			!$media = $this->_table->media->find()
+				->where([
+					'model' => strtolower($this->_table->alias()),
+					'foreign_key' => $entity->id,
+					'name' => $field_name
+				])
+				->first()
+		) {
+			$media = $this->_table->media->newEntity();
+		}
+
+		$media->model = strtolower($this->_table->alias());
+		$media->foreign_key = $entity->id;
+		$media->field_type = 'field';
+		$media->name = $field_name;
+
+		$media->tmp_name = $_FILES[$field_name]['tmp_name'];
+
+		$this->_table->media->save($media);
 	}
 
 	/**
@@ -129,7 +249,11 @@ class MediaBehavior extends Behavior
 	{
 
 		$query->contain([
-			'Media' => ['sort' => 'position ASC'],
+			'Media' => function ($q) {
+
+				return $q->where(['field_type !=' => 'field'])
+					->order(['Media.position' => 'ASC']);
+			}
 		]);
 
 		return $query;

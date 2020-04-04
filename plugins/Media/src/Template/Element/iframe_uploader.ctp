@@ -1,0 +1,1 @@
+<iframe src="/media/medias?model=<?= $model; ?>&foreign_key=<?= $foreign_key; ?>" style="width:100%; border: none; min-height: 1000px;overflow-y:auto;"></iframe>

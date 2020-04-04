@@ -31,6 +31,7 @@ class MediasTable extends Table
 		'image/jpeg',
 		'image/pjpeg',
 		'image/png',
+		'application/pdf'
 		// 'image/vnd.microsoft.icon',
 		// 'image/x-icon',
 	);
@@ -38,6 +39,8 @@ class MediasTable extends Table
 	protected $uploads_dir = ROOT . DS . 'uploads';
 
 	protected $handle = false;
+
+	protected $table;
 
 	/**
 	 * Initialize method.
@@ -85,40 +88,53 @@ class MediasTable extends Table
 	 */
 	public function beforeSave(Event $event, Entity $entity, \ArrayObject $options)
 	{
+
 		if (!isset($entity->model)) {
 			throw new \Exception(__d('media', 'Entity does not have correct \'model\' parameter'));
 		}
 
-		if ($entity->isNew()) {
-			$table = TableRegistry::get($entity->model);
+		$this->table = TableRegistry::get($entity->model);
 
-			if (!\in_array('Media', $table->behaviors()->loaded())) {
-				throw new NotImplementedException(__d('media', "The model '{0}' doesn't have a 'Media' Behavior", $entity->model));
-			}
+		if (!\in_array('Media', $this->table->behaviors()->loaded())) {
+			throw new NotImplementedException(__d('media', "The model '{0}' doesn't have a 'Media' Behavior", $entity->model));
+		}
 
-			$entity->position = $this->setPosition($entity);
-
-			try {
-				$this->checkForUploadedFileErrors();
-				// $handle = $this->setFileHandle($options);
-
-				$this->setFileName(
-					$table,
-					$entity->foreign_key,
-					$entity->position
-				);
-
-				$this->saveUploadedFile(
-					$entity
-				);
-
-				$entity = $this->setEntityFileDetails($entity);
-			} catch (\Exception $e) {
-				throw new \Exception($e->getMessage());
-			}
+		if (!empty($entity->tmp_name)) {
+			$this->uploadFile($entity);
 		}
 
 		return true;
+	}
+
+	protected function uploadFile(Entity $entity)
+	{
+
+
+
+		if ($entity->field_type != 'field') {
+			$entity->position = $this->setPosition($entity);
+		}
+
+
+		try {
+			// $this->setFileHandle($options);
+			$this->checkForUploadedFileErrors($entity->tmp_name);
+
+			if ($entity->field_type != 'field') {
+				$this->setFileName(
+					$this->table,
+					$entity
+				);
+			}
+
+			$this->saveUploadedFile(
+				$entity
+			);
+
+			$entity = $this->setEntityFileDetails($entity);
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage());
+		}
 	}
 
 	public function setFileHandle($file_array)
@@ -127,23 +143,7 @@ class MediasTable extends Table
 			throw new \Exception(__d('media', 'No uploaded file found'));
 		}
 
-		$this->handle = $this->initializeFileUpload($file_array);
-
-		// if (
-		//     isset($options['files'])
-		//     && is_array($options['files'])
-		//     ) {
-
-		//     $handle = $this->checkForUploadedFileErrors($handle);
-		//     return $handle;
-
-		// } elseif (!empty($options['handle'])) {
-
-		//     return $options['handle'];
-
-		// }
-
-		// throw new \Exception(__d('media','File handle is not correctly set'));
+		$this->handle[$file_array['tmp_name']] = $this->initializeFileUpload($file_array);
 	}
 
 	public function initializeFileUpload($file)
@@ -151,23 +151,26 @@ class MediasTable extends Table
 		return new upload($file, 'fr_FR');
 	}
 
-	public function checkForUploadedFileErrors()
+	public function checkForUploadedFileErrors($tmp_name)
 	{
-		if (!$this->handle->uploaded) {
+
+		if (!$this->handle[$tmp_name]->uploaded) {
+
 			throw new \Exception(__d('media', 'There was a problem with the file upload'));
 		}
 
-		$this->handle->allowed = $this->_imageMimetypes;
 
-		if (!in_array($this->handle->file_src_mime, $this->_imageMimetypes)) {
+		$this->handle[$tmp_name]->allowed = $this->_imageMimetypes;
+
+		if (!in_array($this->handle[$tmp_name]->file_src_mime, $this->_imageMimetypes)) {
 			throw new \Exception(__d('media', 'File type not allowed'));
 		}
 
-		$this->handle->Process();
+		$this->handle[$tmp_name]->Process();
 
-		if ($this->handle->error) {
-			$this->handle->clean();
-			throw new \Exception($this->handle->error);
+		if ($this->handle[$tmp_name]->error) {
+			$this->handle[$tmp_name]->clean();
+			throw new \Exception($this->handle[$tmp_name]->error);
 		}
 	}
 
@@ -175,19 +178,11 @@ class MediasTable extends Table
 	{
 		$target_dir = $this->setTargetDir($entity);
 
-		$this->handle->Process($target_dir);
+		$this->handle[$entity->tmp_name]->Process($target_dir);
 
-		if ($this->handle->error) {
-			throw new \Exception($this->handle->error);
+		if ($this->handle[$entity->tmp_name]->error) {
+			throw new \Exception($this->handle[$entity->tmp_name]->error);
 		}
-
-		// return [
-		//     'file' => $handle->file_dst_name,
-		//     'size' => $handle->file_src_size,
-		//     'type' => $handle->file_src_mime,
-		//     'width' => $handle->image_src_x,
-		//     'height' => $handle->image_src_y
-		// ];
 	}
 
 	protected function setTargetDir($entity)
@@ -197,24 +192,23 @@ class MediasTable extends Table
 
 	protected function setEntityFileDetails($entity)
 	{
-		$entity->file = $this->handle->file_dst_name;
-		$entity->size = $this->handle->file_src_size;
-		$entity->type = $this->handle->file_src_mime;
-		$entity->width = $this->handle->image_src_x;
-		$entity->height = $this->handle->image_src_y;
+		$entity->file = $this->handle[$entity->tmp_name]->file_dst_name;
+		$entity->size = $this->handle[$entity->tmp_name]->file_src_size;
+		$entity->file_type = $this->handle[$entity->tmp_name]->file_src_mime;
+		$entity->width = $this->handle[$entity->tmp_name]->image_src_x;
+		$entity->height = $this->handle[$entity->tmp_name]->image_src_y;
 
 		return $entity;
 	}
 
 	public function setFileName(
 		$table,
-		$foreign_key,
-		$position
+		$entity
 	) {
 		if (!empty($table->medias['filename_format'])) {
 			$filename = '';
 
-			$parent_record = $this->getParentRecord($table, $foreign_key);
+			$parent_record = $this->getParentRecord($table, $entity->foreign_key);
 
 			$filename .= $this->setFilenamePrefix($table);
 
@@ -222,11 +216,11 @@ class MediasTable extends Table
 
 			$filename .= $this->setFilenameSuffix($table);
 
-			$filename .= $position;
+			$filename .= $entity->position;
 
 			$filename .= '-' . time();
 
-			$this->handle->file_src_name_body = strtolower(Inflector::slug($filename));
+			$this->handle[$entity->tmp_name]->file_src_name_body = strtolower(Inflector::slug($filename));
 		}
 	}
 
@@ -291,7 +285,11 @@ class MediasTable extends Table
 
 		$last_item = $this->find()
 			->select(['model', 'foreign_key', 'position'])
-			->where(['model' => $entity->model, 'foreign_key' => $entity->foreign_key])
+			->where([
+				'model' => $entity->model,
+				'foreign_key' => $entity->foreign_key,
+				'field_type !=' => 'field'
+			])
 			->order(['position' => 'desc'])
 			->first();
 

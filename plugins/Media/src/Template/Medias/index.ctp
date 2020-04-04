@@ -50,20 +50,26 @@ use Cake\Routing\Router; ?>
 				}
 			})
 			.bind('fileuploaddone', function(e, data) {
-				console.log('ID #file_' + data.result.files[0].id)
+				console.log('result', data.result.files[0]);
+
+				console.log('ID #file_' + data.result.files[0].id);
 				$('#file_' + data.result.files[0].id).css('display', 'none');
 				var image = '<img src="' + data.result.files[0].media_list_url + '" />';
+				console.log(image);
 
 				var image_buttons = '<div class="container_images_controls">' +
-					'<p><small><?php echo __d('media', 'MSG_NO_IMAGE_CAPTION') ?></small></p>' +
+					// '<p><small><?php echo __d('media', 'MSG_NO_IMAGE_CAPTION') ?></small></p>' +
 					'<p class="btns_images_controls">' +
 					'<a title="MSG_NO_IMAGE_CAPTION" rel="gallery" class="btn btn-info btn-sm show_image" href="' + data.result.files[0].url + '"><i class="glyphicon glyphicon-zoom-in"></i></a>&nbsp;' +
-					'<a title="Modify" class="btn btn-info btn-sm" href="' + data.result.files[0].edit_url + '"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;' +
+					// '<a title="Modify" class="btn btn-info btn-sm" href="' + data.result.files[0].edit_url + '"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;' +
 					'<a title="Delete" class="btn btn-danger btn-sm delete_image" href="' + data.result.files[0].delete_url + '"><i class="glyphicon glyphicon-trash"></i></a>&nbsp;' +
 					'</p>' +
 					'</div>';
 
-				$('<li / > ').html(image + image_buttons).attr('data-id ', data.result.files[0].id).appendTo('.media_gallery ');
+				$('<li / > ')
+					.html(image + image_buttons)
+					.attr('data-id', data.result.files[0].id)
+					.appendTo('.media_gallery');
 
 			});
 

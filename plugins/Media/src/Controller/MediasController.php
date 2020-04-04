@@ -54,6 +54,7 @@ class MediasController extends AppController
 	 */
 	public function canUploadMedias($model, $foreign_key)
 	{
+		return true;
 		$user = $this->request->session()->read('Auth.User');
 
 		if (empty($user)) {
@@ -107,6 +108,7 @@ class MediasController extends AppController
 			'conditions' => [
 				'foreign_key' => $foreign_key,
 				'model' => $model,
+				'field_type !=' => 'field'
 			],
 			'order' => ['position ASC'],
 		])->toArray();
@@ -187,6 +189,7 @@ class MediasController extends AppController
 		$media = $this->Medias->newEntity();
 		$media = $this->Medias->patchEntity($media, $data);
 		$this->Medias->setFileHandle($this->request->data['files'][0]);
+		$media->tmp_name = $this->request->data['files'][0]['tmp_name'];
 
 		if ($this->Medias->save($media, $this->request->data)) {
 			$result['url'] = '/image/' . strtolower($media->model) . '/' . $media->foreign_key . '/' . $media->file;
