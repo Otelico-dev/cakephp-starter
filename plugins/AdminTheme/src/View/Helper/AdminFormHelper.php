@@ -82,4 +82,17 @@ class AdminFormHelper extends FormHelper
 
 		return $out;
 	}
+	// public function text($fieldName, array $options = [])
+	// {
+	// 	debug($fieldName);
+	// 	debug($options);
+	// }
+	// public function file($fieldName, array $options = [])
+	// {
+	// 	debug($fieldName);
+	// 	debug($options);
+	// 	$input = parent::file($fieldName, $options);
+
+	// 	return $input;
+	// }
 }

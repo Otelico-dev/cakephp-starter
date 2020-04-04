@@ -1,10 +1,4 @@
 const config = require('./gulp-config')
-// config.vendorDir
-const pluginsJs = [
-    // config.vendorDir + '/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
-    // config.vendorDir + '/datatables.net/js/jquery.dataTables.min.js',
-    // config.vendorDir + '/datatables.net-bs4/js/dataTables.bootstrap4.min.js'
-];
 
 const mainFilesConfig = {
     order: {
@@ -24,7 +18,17 @@ const mainFilesConfig = {
     }
 };
 
+
+const pluginsJs = [
+    config.vendorDir + '/bootstrap/js/dist/util.js',
+    config.vendorDir + '/bootstrap/js/dist/tab.js',
+    config.vendorDir + '/bootstrap/js/dist/collapse.js',
+
+];
+
+
 const pluginsCss = [
+
 
     config.vendorDir + '/@fancyapps/fancybox/dist/jquery.fancybox.min.css',
     config.vendorDir + '/datatables.net-bs4/css/dataTables.bootstrap4.min.css',
@@ -34,6 +38,7 @@ const pluginsCss = [
     config.vendorDir + '/selectize/dist/css/selectize.css',
     config.vendorDir + '/selectize/dist/css/selectize.bootstrap3.css',
     config.vendorDir + '/bootstrap4-toggle/css/bootstrap4-toggle.min.css'
+
 
 ];
 

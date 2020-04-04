@@ -15,7 +15,7 @@ const config = {
         }
     },
     browser: '/opt/firefox_dev/firefox',
-    proxy: 'cakephp-starter.local'
+    proxy: 'alt-loc.local'
 };
 
 // export default config
