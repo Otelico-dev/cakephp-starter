@@ -18,6 +18,7 @@ namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -51,9 +52,9 @@ class AppController extends Controller
 
 		$this->loadComponent('Flash');
 
-		//$this->loadComponent('Security');
+		$this->loadComponent('Security');
 
-		// $this->loadComponent('CakeDC/Users.UsersAuth');
+		$this->loadComponent('CakeDC/Users.UsersAuth');
 
 		$this->loadComponent('DataTables.DataTables', [
 			'language' => [
@@ -83,6 +84,13 @@ class AppController extends Controller
 				'Crud.Redirect',
 			],
 		]);
+
+		$this->loadComponent('AdminTheme.Translate');
+
+		if (Configure::read('I18n')) {
+
+			$this->accepted_languages = Configure::read('I18n.languages');
+		}
 	}
 
 	/**
@@ -100,6 +108,10 @@ class AppController extends Controller
 
 		if ($this->viewBuilder()->getClassName() === null) {
 			$this->viewBuilder()->setClassName('AdminTheme.App');
+		}
+
+		if (isset($this->accepted_languages)) {
+			$this->set('accepted_languages', $this->accepted_languages);
 		}
 	}
 }

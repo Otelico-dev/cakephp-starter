@@ -44,8 +44,8 @@ use Cake\Core\Configure;
 			// echo $this->Html->link(__d('CakeDC/Users', 'Reset Password'), ['action' => 'requestResetPassword']);
 		}
 		?>
+		<?= $this->Form->button(__d('CakeDC/Users', 'Login'), ['class' => 'btn-block']); ?>
 	</fieldset>
 	<?= implode(' ', $this->User->socialLoginList()); ?>
-	<?= $this->Form->button(__d('CakeDC/Users', 'Login')); ?>
 	<?= $this->Form->end() ?>
 </div>
