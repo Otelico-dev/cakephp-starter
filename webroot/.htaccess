@@ -1,5 +1,14 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
+
+	RewriteEngine On
+	
+	# Check image exists in cache, if not rewrite to upload controller
+    RewriteCond %{REQUEST_URI} /image/(.*)
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+
+    RewriteRule ^image/(.*)$ image.php?uri=$1 [L,QSA]
+
+    
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
