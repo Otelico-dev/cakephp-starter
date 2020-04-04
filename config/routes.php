@@ -116,9 +116,13 @@ Router::scope('/', function (RouteBuilder $routes) {
 });
 
 Router::prefix('admin', function ($routes) {
+
 	$routes->plugin('Media', function ($routes) {
 		$routes->connect('/:controller', ['plugin' => 'Media', 'prefix' => false]);
 	});
+
+	$routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+
 	$routes->fallbacks(DashedRoute::class);
 });
 
