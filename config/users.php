@@ -3,10 +3,20 @@
 return [
 	'Auth' => [
 		'loginRedirect' => [
-			'controller' => 'Members',
+			'controller' => 'Dashboard',
 			'action' => 'index',
 			'prefix' => 'admin',
 			'plugin' => false
 		]
+	],
+	'Users' => [
+		'Registration' => [
+			'active' => false
+		],
+		'RememberMe' => [
+
+			'active' => false,
+		],
+
 	]
 ];
