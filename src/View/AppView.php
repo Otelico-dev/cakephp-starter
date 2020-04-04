@@ -16,6 +16,7 @@
 namespace App\View;
 
 use Cake\View\View;
+use LilHermit\Bootstrap4\View\BootstrapViewTrait;
 
 /**
  * Application View
@@ -26,7 +27,7 @@ use Cake\View\View;
  */
 class AppView extends View
 {
-
+	use BootstrapViewTrait;
 	/**
 	 * Initialization hook method.
 	 *
@@ -38,11 +39,22 @@ class AppView extends View
 	 */
 	public function initialize()
 	{
+
+
+
 		if ($this->request->getParam('prefix') == 'admin') {
+
 			$this->loadHelper('Form', [
 				'className' => 'AdminTheme.AdminForm',
-
 			]);
+		} else {
+			$this->initializeBootstrap();
 		}
+
+		$this->loadHelper('Image', [
+			'className' => 'Media.Image'
+		]);
+
+		$this->loadHelper('Svg');
 	}
 }
