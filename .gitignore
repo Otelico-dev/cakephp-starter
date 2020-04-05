@@ -10,6 +10,8 @@
 /webroot/assets/admin/dist/*
 /webroot/assets/public/dist/*
 /plugins/AdminTheme/webroot/assets/dist/*
+/webroot/admin_theme
+
 # OS generated files #
 ######################
 .DS_Store
