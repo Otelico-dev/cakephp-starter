@@ -11,23 +11,14 @@
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
         "bootstrap": "^4.4.1",
-        "bootstrap4-toggle": "^3.6.1",
-        "datatables.net": "^1.10.20",
-        "datatables.net-bs4": "^1.10.20",
-        "datatables.net-rowreorder": "^1.2.6",
-        "datatables.net-rowreorder-bs4": "^1.2.6",
         "jquery": "^3.3.1",
-        "jquery-sortable": "^0.9.13",
         "jquery.easing": "^1.4.1",
+        "owl.carousel": "^2.3.4",
         "pickadate": "^3.6.2",
-        "selectize": "^0.12.6",
         "sweetalert2": "^9.0.2"
     },
     "overrides": {
-        "bootstrap": [],
-        "bootstrap-switch": {
-            "style": "dist/boostrap3/boostrap-switch.min.css"
-        }
+        "bootstrap": []
     },
     "devDependencies": {
         "@babel/cli": "^7.7.4",
@@ -64,7 +55,6 @@
         "imagemin-pngquant": "^8.0.0",
         "imagemin-zopfli": "^6.0.0",
         "modularscale-sass": "^3.0.10",
-        "node-sass": "^4.13.1",
         "through2": "^3.0.1"
     },
     "scripts": {
