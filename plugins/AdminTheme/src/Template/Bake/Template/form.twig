@@ -1,5 +1,6 @@
 <h1><?= (!${{ singularVar }}->isNew()) ? __('Modifier {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __('Ajouter un {{ singularHumanName }}'); ?></h1>
 <?= $this->Form->create(${{ singularVar }}) ?>
+<p class="text-right form__submit-container"><?= $this->Form->button(__('Save'), ['class' => 'btn-lg']); ?></p>
 <fieldset class="form__container form-group">
 	<legend><?= __('{{ action|humanize }} {{ singularHumanName }}'); ?></legend>
 	
@@ -34,5 +35,5 @@
 {% endif %}
         ?>
 </fieldset>
-<p><?= $this->Form->button(__('Save'), ['class' => 'btn-lg']); ?></p>
+
 <?= $this->Form->end(); ?>
