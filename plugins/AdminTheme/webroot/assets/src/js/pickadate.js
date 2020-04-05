@@ -21,7 +21,10 @@ $.extend($.fn.pickadate.defaults, {
 // });
 
 // const datepickers = $('.datepicker');
-$('.datepicker').pickadate();
+$('.datepicker').pickadate({
+    formatSubmit: 'yyyy-mm-dd',
+    hiddenName: true
+});
 // datepickers.each(function () {
 //     $(this).pickadate();
 // });
