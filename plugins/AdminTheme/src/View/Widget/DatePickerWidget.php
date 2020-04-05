@@ -31,9 +31,10 @@ class DatePickerWidget implements WidgetInterface
 		$required = $data['required'] ? 'required' : '';
 		$disabled = isset($data['disabled']) && $data['disabled'] ? 'disabled' : '';
 
-		if ($val && $val instanceof \DateTime) {
+		if ($val && $val instanceof \Cake\I18n\FrozenDate) {
 			$val = $val->format($type === 'date' ? 'Y-m-d' : 'Y-m-d H:i:s');
 		}
+
 
 		$icon = $type === 'time'
 			? 'time'
