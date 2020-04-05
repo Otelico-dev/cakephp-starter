@@ -27,7 +27,9 @@ class AppI18nMiddleware extends I18nMiddleware
 		$langs = $config['languages'];
 
 		$requestParams = $request->getAttribute('params');
+
 		$lang = isset($requestParams['lang']) ? $requestParams['lang'] : $config['defaultLanguage'];
+
 		if (isset($langs[$lang])) {
 			I18n::setLocale($langs[$lang]['locale']);
 		} else {
@@ -35,6 +37,7 @@ class AppI18nMiddleware extends I18nMiddleware
 		}
 
 		Configure::write('App.language', $lang);
+		$request = $request->withParam('lang', $lang);
 
 		return $next($request, $response);
 	}
