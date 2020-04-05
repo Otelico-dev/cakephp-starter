@@ -1,3 +1,4 @@
+<h1><?= (!${{ singularVar }}->isNew()) ? __('Modifier {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __('Ajouter un {{ singularHumanName }}'); ?></h1>
 <?= $this->Form->create(${{ singularVar }}) ?>
 <fieldset class="form__container form-group">
 	<legend><?= __('{{ action|humanize }} {{ singularHumanName }}'); ?></legend>
