@@ -107,7 +107,7 @@ class AppController extends Controller
 		$this->viewBuilder()->setLayout('AdminTheme.admin');
 
 		if ($this->viewBuilder()->getClassName() === null) {
-			$this->viewBuilder()->setClassName('AdminTheme.App');
+			$this->viewBuilder()->setClassName('AdminTheme.AdminApp');
 		}
 
 		if (isset($this->accepted_languages)) {
