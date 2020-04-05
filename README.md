@@ -1,15 +1,15 @@
 # Installation
 
-1. Install dependencies : composer install
-2. Update database credentials in config/app.php
-3. User migrations : bin/cake migrations migrate -p CakeDC/Users
-4. Create 18n table : bin/cake migrations migrate
-5. Npm install admin : cd plugins/AdminTheme/webroot/assets/gulp && npm install
-6. Run admin gulp : cd plugins/AdminTheme/webroot/assets/gulp && gulp
+1. Se connecter à la machine virtuelle ( vagrant ssh )
+2. Naviguer au dossier racine du pojet
+3. Executer script build : ./build.sh
+4. Répondre yes [Y] à la question 'Set folder permissions
+5. Si les node modules de l'admin ne sont pas installé correctement, naviguer au dossier (./plugin/AdminTheme/webroot/assets/gulp), hors la machine virtuelle, et installer normalement : npm install && gulp build
+6. Ajouter utilisateur 'superadmin' : bin/cake users addSuperuser
 
-# Creating modules
+# Création de modules pour l'admin
 
-1. Create table using migrations
+1. Créer une table à l'aide de migrations
 
 bin/cake bake migration Create[TableName][field:type]
 
@@ -17,8 +17,26 @@ ex. bin/cake bake migration CreateMembers name:string
 
 bin/cake migrations migrate
 
-2. Create files using bake
+2. Créer des fichiers en utilisant bake
 
 bin/cake AdminTheme.AdminBake --table Members
 
-3. Modify views
+3. Modifier le views selon besoin
+
+# Création de controllers coté publique
+
+1. Créer le controller en utilisant bake
+
+bin/cake bake controller [TableNamePluriel]
+
+ex. bin/cake bake controller Members
+
+# Création de view coté publique
+
+1. Créer dossier avec nom du tableau dans 'src/Template'
+
+ex. mkdir src/Template/Members
+
+2. Créer le view avec le même nom de l'action dans le controller
+
+ex. index.ctp , view.ctp
