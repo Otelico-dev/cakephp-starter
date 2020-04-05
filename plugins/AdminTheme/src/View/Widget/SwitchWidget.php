@@ -60,6 +60,6 @@ html;
 			return [];
 		}
 
-		return [];
+		return [$data['name']];
 	}
 }
