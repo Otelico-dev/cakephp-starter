@@ -3,6 +3,7 @@
 namespace AdminTheme\Shell\Task;
 
 use Bake\Shell\Task\SimpleBakeTask;
+use Cake\Utility\Inflector;
 
 class DatatableTask extends SimpleBakeTask
 {
@@ -15,7 +16,7 @@ class DatatableTask extends SimpleBakeTask
 
 	public function fileName($name)
 	{
-		return 'Admin' . DS . ucfirst($name) . DS . 'datatables' . DS . strtolower($name) . '.ctp';
+		return 'Admin' . DS . ucfirst($name) . DS . 'datatables' . DS . strtolower(Inflector::underscore($name)) . '.ctp';
 	}
 
 	public function template()
