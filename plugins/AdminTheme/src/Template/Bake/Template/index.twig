@@ -16,7 +16,7 @@
 	<div class="table-responsive">
 		<?=
 			$this->DataTables->render(
-				'{{ pluralHumanName }}',
+				'{{ pluralVar|camelize }}',
 				[
 					'class' => 'table table-striped',
 

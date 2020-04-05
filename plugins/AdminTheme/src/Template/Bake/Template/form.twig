@@ -2,7 +2,7 @@
 <?= $this->Form->create(${{ singularVar }}) ?>
 <p class="text-right form__submit-container"><?= $this->Form->button(__('Save'), ['class' => 'btn-lg']); ?></p>
 <fieldset class="form__container form-group">
-	<legend><?= __('{{ action|humanize }} {{ singularHumanName }}'); ?></legend>
+	
 	
 	<?php
 {% for field in fields if field not in primaryKey %}
