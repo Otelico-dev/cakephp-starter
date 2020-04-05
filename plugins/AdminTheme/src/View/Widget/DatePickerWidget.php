@@ -31,7 +31,7 @@ class DatePickerWidget implements WidgetInterface
 		$required = $data['required'] ? 'required' : '';
 		$disabled = isset($data['disabled']) && $data['disabled'] ? 'disabled' : '';
 
-		if ($val) {
+		if ($val && $val instanceof \DateTime) {
 			$val = $val->format($type === 'date' ? 'Y-m-d' : 'Y-m-d H:i:s');
 		}
 
