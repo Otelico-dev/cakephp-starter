@@ -55,6 +55,11 @@ class CreateMedias extends AbstractMigration
 			'limit' => 2000,
 			'null' => true,
 		]);
+		$table->addColumn('is_deleted', 'string', [
+			'default' => 'false',
+			'limit' => 5,
+			'null' => true,
+		]);
 		$table->addColumn('created', 'datetime', [
 			'default' => null,
 			'null' => false,
