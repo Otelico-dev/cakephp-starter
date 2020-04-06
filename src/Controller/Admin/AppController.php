@@ -54,7 +54,10 @@ class AppController extends Controller
 
 		$this->loadComponent('Security');
 
-		$this->Security->config('unlockedFields', ['is_published']);
+		$this->Security->setConfig([
+			'unlockedActions' => ['reorder'],
+			'unlockedFields' => ['is_published']
+		]);
 
 		$this->loadComponent('CakeDC/Users.UsersAuth');
 
