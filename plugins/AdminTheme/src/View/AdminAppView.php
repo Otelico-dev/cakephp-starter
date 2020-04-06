@@ -77,5 +77,11 @@ class AdminAppView extends AppView
 		$this->loadHelper('Media', [
 			'className' => 'Media.Media'
 		]);
+
+		$this->Breadcrumbs->templates([
+			'wrapper' => '<nav class="breadcrumb-container"><ol class="breadcrumb"{{attrs}}>{{content}}</ol></nav>',
+			'item' => '<li class="breadcrumb-item"><a href="{{url}}"{{innerAttrs}}>{{title}}</a></li>{{separator}}',
+			'itemWithoutLink' => '<li class="breadcrumb-item"><span{{innerAttrs}}>{{title}}</span></li>{{separator}}',
+		]);
 	}
 }

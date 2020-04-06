@@ -33,6 +33,16 @@
 
 	<main class="container-fluid">
 
+		<?php
+
+		$this->Breadcrumbs->prepend(
+			__d('admin', 'BREAD_CRUMB_DASHBOARD'),
+			['controller' => 'dashboard', 'action' => 'index']
+		);
+
+		echo $this->Breadcrumbs->render();
+		?>
+
 		<?= $this->Flash->render() ?>
 		<?= $this->fetch('content') ?>
 
