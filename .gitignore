@@ -46,5 +46,3 @@ nbproject/*
 # Sass preprocessor
 .sass-cache/
 node_modules
-# Build and deploy
-build.sh
