@@ -1,3 +1,13 @@
+<?php
+$this->Breadcrumbs->add(
+	__d('admin', '{{pluralVar|capitalize}}'),
+	['controller' => '{{pluralVar}}', 'action' => 'index']
+);
+
+?>
+
+<h1><?= __d('admin', 'TITLE_{{pluralVar|upper}}'); ?></h1>
+
 <p class="text-right">
 	<?= $this->Html->link(
 		'<i class="fa fa-plus"></i> ' . __d('admin','Nouveau {{ singularHumanName }}'),

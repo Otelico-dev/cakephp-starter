@@ -1,3 +1,19 @@
+<?php
+
+$this->Breadcrumbs->add([
+	[
+		'title' => __d('admin', '{{pluralVar|capitalize}}'),
+		'url' => ['controller' => '{{pluralVar}}', 'action' => 'index']
+	],
+
+	[
+		'title' => (!${{ singularVar }}->isNew()) ? __d('admin','Modifier {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __d('admin','Ajouter un {{ singularHumanName }}')
+	]
+]);
+
+?>
+
+
 <h1><?= (!${{ singularVar }}->isNew()) ? __d('admin','Modifier {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __d('admin','Ajouter un {{ singularHumanName }}'); ?></h1>
 <?= $this->Form->create(${{ singularVar }}) ?>
 <p class="text-right form__submit-container"><?= $this->Form->button(__d('admin','Sauvegarder'), ['class' => 'btn-lg']); ?></p>
