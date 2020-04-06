@@ -1,5 +1,7 @@
 <?php if ($sidebar_header = $this->Element('Layout/Admin/sidebar_header', [], ['ignoreMissing' => true])) : ?>
-	<?= $sidebar_header; ?>
+	<div class="sidebar__header">
+		<?= $sidebar_header; ?>
+	</div>
 <?php endif; ?>
 
 

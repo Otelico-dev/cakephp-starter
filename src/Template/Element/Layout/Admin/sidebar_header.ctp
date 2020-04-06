@@ -1,0 +1,1 @@
+<?= $this->Configure->read('site_title') ?>

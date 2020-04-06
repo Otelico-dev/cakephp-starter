@@ -45,10 +45,10 @@
 		?>
 
 		<main class="container-fluid">
-
-			<?= $this->Flash->render() ?>
-			<?= $this->fetch('content') ?>
-
+			<div class="container-content">
+				<?= $this->Flash->render() ?>
+				<?= $this->fetch('content') ?>
+			</div>
 		</main>
 
 		<footer>

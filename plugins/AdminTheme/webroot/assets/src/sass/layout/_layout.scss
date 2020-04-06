@@ -1,13 +1,25 @@
 body {
     display: flex;
     min-height: 100vh;
+    background-color: #ebedef;
 }
 
 .sidebar {
     width: 256px;
     z-index: 1;
+    background: #fff;
+
+    &__header {
+        padding: 0.8rem 1rem;
+    }
 }
 
 .content-wrapper {
     flex: 1;
+
+    .container-content {
+        background: #fff;
+        box-shadow: 2px 2px 4px #ccc;
+        padding: 1rem;
+    }
 }
