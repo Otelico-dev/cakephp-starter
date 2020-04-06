@@ -21,13 +21,21 @@ $theme-colors: (primary: #6872f9,
 @import 'bootstrap';
 
 // Layout
-@import 'header';
-@import 'sidebar';
-@import 'footer';
+@import 'layout/layout';
+@import 'layout/header';
+@import 'layout/sidebar';
+@import 'layout/footer';
+@import 'layout/navigation';
+
+
+// Components
+@import 'components/breadcrumbs';
+@import 'components/tables';
 
 // Modules
 @import 'login';
 
 // General
 @import 'app_forms';
+@import 'typography';
 @import 'datatables';

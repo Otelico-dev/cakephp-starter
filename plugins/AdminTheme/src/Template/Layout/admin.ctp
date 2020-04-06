@@ -22,16 +22,16 @@
 </head>
 
 <body>
-	<header>
+	<!-- <header>
 		<div class="container-fluid">
 			<?= $this->Element('AdminTheme.Layout/Admin/header') ?>
 		</div>
-	</header>
-	<aside>
+	</header> -->
+	<aside class="sidebar">
 		<?= $this->Element('AdminTheme.Layout/Admin/sidebar') ?>
 	</aside>
 
-	<main class="container-fluid">
+	<div class="content-wrapper">
 
 		<?php
 
@@ -41,16 +41,25 @@
 		);
 
 		echo $this->Breadcrumbs->render();
+
 		?>
 
-		<?= $this->Flash->render() ?>
-		<?= $this->fetch('content') ?>
+		<main class="container-fluid">
 
-	</main>
+			<?= $this->Flash->render() ?>
+			<?= $this->fetch('content') ?>
 
-	<footer>
-		<?= $this->Element('AdminTheme.Layout/Admin/footer') ?>
-	</footer>
+		</main>
+
+		<footer>
+			<?= $this->Element('AdminTheme.Layout/Admin/footer') ?>
+		</footer>
+
+	</div>
+
+
+
+
 	<?= $this->Html->script('/admin_theme/assets/dist/js/app') ?>
 	<?= $this->DataTables->setJs() ?>
 	<?= $this->fetch('script') ?>

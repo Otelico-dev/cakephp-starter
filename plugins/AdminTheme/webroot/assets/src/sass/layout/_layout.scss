@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 256px;
+    z-index: 1;
+}
+
+.content-wrapper {
+    flex: 1;
+}
