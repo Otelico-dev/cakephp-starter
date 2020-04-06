@@ -29,11 +29,22 @@ class CreateMedias extends AbstractMigration
 			'limit' => 255,
 			'null' => false,
 		]);
+		$table->addColumn('file_type', 'string', [
+			'default' => null,
+			'limit' => 255,
+			'null' => false,
+		]);
 		$table->addColumn('name', 'string', [
 			'default' => null,
 			'limit' => 255,
 			'null' => false,
 		]);
+		$table->addColumn('field_type', 'string', [
+			'default' => null,
+			'limit' => 255,
+			'null' => false,
+		]);
+
 		$table->addColumn('position', 'integer', [
 			'default' => null,
 			'limit' => 11,
