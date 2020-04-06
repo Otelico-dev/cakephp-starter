@@ -6,11 +6,11 @@
 /tmp/*
 /uploads/*
 /vendor/*
-/webroot/images/*
 /webroot/assets/admin/dist/*
 /webroot/assets/public/dist/*
 /plugins/AdminTheme/webroot/assets/dist/*
 /webroot/admin_theme
+/webroot/image/*
 
 # OS generated files #
 ######################
