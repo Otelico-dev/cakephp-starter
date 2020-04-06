@@ -21,6 +21,12 @@
 						echo $this->Form->control('_translations.' . $language['locale'] . '.' . $input['name'], [
 							'label' => $input['label']
 						]);
+
+						if (isset($input['rich_text'])) {
+							$this->Html->scriptStart(['block' => true]);
+							echo $this->CkEditor->getJavascript('_translations.' . $language['locale'] . '.' . $input['name']);
+							$this->Html->scriptEnd();
+						}
 					}
 					?>
 

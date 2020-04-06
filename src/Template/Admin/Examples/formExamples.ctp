@@ -12,7 +12,8 @@
 					],
 					[
 						'name' => 'description',
-						'label' => __d('admin', 'Description')
+						'label' => __d('admin', 'Description'),
+						'rich_text' => true
 					]
 				]
 			]);

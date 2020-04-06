@@ -61,6 +61,7 @@ class AdminAppView extends AppView
 		$this->loadHelper('AdminTheme.Configure');
 		$this->loadHelper('DataTables.DataTables');
 		$this->loadHelper('AdminTheme.DtReorder');
+		$this->loadHelper('AdminTheme.CkEditor');
 
 		$datePickerWidget = new DatePickerWidget($this->Form->templater());
 		$this->Form->addWidget('datepicker', $datePickerWidget);
