@@ -73,5 +73,9 @@ class AdminAppView extends AppView
 		$this->loadHelper('Image', [
 			'className' => 'Media.Image'
 		]);
+
+		$this->loadHelper('Media', [
+			'className' => 'Media.Media'
+		]);
 	}
 }
