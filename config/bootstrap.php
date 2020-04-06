@@ -206,9 +206,4 @@ Type::build('timestamp')
 /**
  * Configure accepted languages
  */
-Configure::write('I18n.languages', [
-	'fr' => ['locale' => 'fr_FR', 'name' => 'Français'],
-	'en' => ['locale' => 'en_GB', 'name' => 'English'],
-]);
-
-Configure::write('I18n.defaultLanguage', 'fr');
+Configure::load('i18n', 'default');
