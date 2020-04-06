@@ -1,0 +1,1 @@
+<?= $this->Media->displayImageUploadBlock('Examples', $example->id) ?>

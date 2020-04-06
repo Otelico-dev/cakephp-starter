@@ -1,0 +1,1 @@
+<?= $this->Element('../Admin/Examples/tabs_examples'); ?>
