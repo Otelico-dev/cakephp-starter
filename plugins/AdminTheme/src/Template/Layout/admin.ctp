@@ -36,7 +36,7 @@
 		<?php
 
 		$this->Breadcrumbs->prepend(
-			__d('admin', 'BREAD_CRUMB_DASHBOARD'),
+			__d('admin', 'Tableau de bord'),
 			['controller' => 'dashboard', 'action' => 'index']
 		);
 

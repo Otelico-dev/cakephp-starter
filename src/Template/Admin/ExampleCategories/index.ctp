@@ -1,3 +1,13 @@
+<?php
+$this->Breadcrumbs->add(
+	__d('admin', 'Catégories exemples'),
+	['controller' => 'exampleCategories', 'action' => 'index']
+);
+
+?>
+
+<h1><?= __d('admin', 'Catégories exemples'); ?></h1>
+
 <p class="text-right">
 	<?= $this->Html->link(
 		'<i class="fa fa-plus"></i> ' . __d('admin', 'Nouvelle catégorie exemple'),

@@ -1,23 +1,23 @@
 <?php
 $this->Breadcrumbs->add(
-	__d('admin', 'Examples'),
-	['controller' => 'examples', 'action' => 'index']
+	__d('admin', 'Exemples'),
+	['controller' => 'Exemples', 'action' => 'index']
 );
 
 ?>
 
-<h1><?= __d('admin', 'TITLE_EXAMPLES'); ?></h1>
+<h1><?= __d('admin', 'Exemples'); ?></h1>
 
 <p class="text-right">
 	<?= $this->Html->link(
-		'<i class="fa fa-plus"></i> ' . __d('admin','Nouveau Example'),
+		'<i class="fa fa-plus"></i> ' . __d('admin', 'Nouveau Exemple'),
 		[
 			'action' => 'add'
-			],
+		],
 		[
-			'escape' => false, 
+			'escape' => false,
 			'class' => 'btn btn-success btn-lg'
-			]
+		]
 	); ?>
 </p>
 

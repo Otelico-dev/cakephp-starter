@@ -1,9 +1,9 @@
 <ul>
 	<li>
-		<?= $this->Html->link(__d('admin', 'LINK_EXAMPLES'), ['controller' => 'examples', 'action' => 'index']) ?>
+		<?= $this->Html->link(__d('admin', 'Examples'), ['controller' => 'examples', 'action' => 'index']) ?>
 	</li>
 
 	<li>
-		<?= $this->Html->link(__d('admin', 'LINK_EXAMPLE_CATEGORIES'), ['controller' => 'exampleCategories', 'action' => 'index']) ?>
+		<?= $this->Html->link(__d('admin', 'Catégories exemples'), ['controller' => 'exampleCategories', 'action' => 'index']) ?>
 	</li>
 </ul>
