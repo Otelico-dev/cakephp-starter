@@ -22,10 +22,10 @@
 <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __('Please enter your username and password') ?></legend>
+        <legend><?= __d('admin','Please enter your username and password') ?></legend>
         <?= $this->Form->control('username') ?>
         <?= $this->Form->control('password') ?>
     </fieldset>
-    <?= $this->Form->button(__('Login')); ?>
+    <?= $this->Form->button(__d('admin','Login')); ?>
     <?= $this->Form->end() ?>
 </div>
