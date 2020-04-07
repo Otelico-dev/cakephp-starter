@@ -37,7 +37,6 @@ class File
 	function __construct()
 	{
 
-
 		$this->uploads_dir = '../uploads' . $this->ds;
 
 		// Check uploads folder exists, exit script if not

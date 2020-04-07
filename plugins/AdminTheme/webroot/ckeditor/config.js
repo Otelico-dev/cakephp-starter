@@ -4,82 +4,83 @@
  */
 
 CKEDITOR.editorConfig = function (config) {
-	// Define changes to default configuration here.
-	// For complete reference see:
-	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-	config.disableNativeSpellChecker = false;
-	config.scayt_autoStartup = true;
-	config.scayt_sLang = 'fr_FR';
+    // Define changes to default configuration here.
+    // For complete reference see:
+    // http://docs.ckeditor.com/#!/api/CKEDITOR.config
+    config.disableNativeSpellChecker = false;
+    config.scayt_autoStartup = true;
+    config.scayt_sLang = 'fr_FR';
 
-	// The toolbar groups arrangement, optimized for two toolbar rows.
-	config.toolbarGroups = [
-		// {
-		// 	name: 'clipboard',
-		// 	groups: ['clipboard', 'undo']
-		// },
-		{
-			name: 'basicstyles',
-			groups: ['basicstyles', 'cleanup']
-		},
-		{
-			name: 'paragraph',
-			groups: ['list', 'indent', 'blocks', 'align', 'bidi']
-		},
-		{
-			name: 'styles'
-		},
+    // The toolbar groups arrangement, optimized for two toolbar rows.
+    config.toolbarGroups = [
+        // {
+        // 	name: 'clipboard',
+        // 	groups: ['clipboard', 'undo']
+        // },
+        {
+            name: 'basicstyles',
+            groups: ['basicstyles', 'cleanup']
+        },
+        {
+            name: 'paragraph',
+            groups: ['list', 'indent', 'blocks', 'align', 'bidi']
+        },
+        {
+            name: 'styles'
+        },
 
-		{
-			name: 'links'
-		},
-		{
-			name: 'insert'
-		},
-		{
-			name: 'forms'
-		},
+        {
+            name: 'links'
+        },
+        {
+            name: 'insert'
+        },
+        {
+            name: 'forms'
+        },
 
-		{
-			name: 'editing',
-			groups: ['find', 'selection', 'spellchecker']
-		},
-		{
-			name: 'document',
-			groups: ['mode', 'document', 'doctools']
-		},
-		{
-			name: 'tools'
-		},
-		{
-			name: 'others'
-		},
-		// '/',
+        {
+            name: 'editing',
+            groups: ['find', 'selection', 'spellchecker']
+        },
+        {
+            name: 'document',
+            groups: ['mode', 'document', 'doctools']
+        },
+        {
+            name: 'tools'
+        },
+        {
+            name: 'others'
+        },
+        // '/',
 
-		// {
-		// 	name: 'colors'
-		// },
-		// { name: 'about' }
-	];
+        // {
+        // 	name: 'colors'
+        // },
+        // { name: 'about' }
+    ];
 
-	// Remove some buttons provided by the standard plugins, which are
-	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Styles';
+    // Remove some buttons provided by the standard plugins, which are
+    // not needed in the Standard(s) toolbar.
+    config.removeButtons = 'Underline,Subscript,Styles';
 
-	// Set the most common block elements.
-	config.format_tags = 'p;h1;h2;h3;pre';
+    // Set the most common block elements.
+    config.format_tags = 'p;h1;h2;h3;pre';
 
-	// Simplify the dialog windows.
-	config.removeDialogTabs = 'image:advanced;link:advanced';
+    // Simplify the dialog windows.
+    config.removeDialogTabs = 'image:advanced;link:advanced';
 
-	// Allow extra HTML elements
-	config.extraAllowedContent = 'div(*);sup(*);iframe[*];*(*);*{*}';
+    // Allow extra HTML elements
+    config.extraAllowedContent = 'div(*);sup(*);iframe[*];*(*);*{*}';
 
-	// Enable native browser spell check
-	config.disableNativeSpellChecker = true;
-
-	config.filebrowserBrowseUrl = '/js/ckeditor/plugins/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-	config.filebrowserUploadUrl = '/js/ckeditor/plugins/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
-	config.filebrowserImageBrowseUrl = '/js/ckeditor/plugins/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
+    // Enable native browser spell check
+    config.disableNativeSpellChecker = true;
+    let filebrowserBrowseUrl = '/admin_theme/ckeditor/plugins/filemanager/dialog.php?type=2&editor=ckeditor&fldr=';
+    //let filebrowserBrowseUrl = '/admin/media/file-browser?type=2&editor=ckeditor&fldr=;'
+    config.filebrowserBrowseUrl = filebrowserBrowseUrl;
+    config.filebrowserUploadUrl = filebrowserBrowseUrl;
+    config.filebrowserImageBrowseUrl = filebrowserBrowseUrl;
 };
 
 // CKEDITOR.plugins.load('pgrfilemanager');

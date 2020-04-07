@@ -108,7 +108,6 @@ class AppController extends Controller
 	public function beforeRender(Event $event)
 	{
 
-
 		$this->viewBuilder()->setLayout('AdminTheme.admin');
 
 		if ($this->viewBuilder()->getClassName() === null) {
