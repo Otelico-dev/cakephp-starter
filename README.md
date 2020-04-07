@@ -1,11 +1,18 @@
-# Installation
+# Installation de Cake
 
 1. Se connecter à la machine virtuelle ( vagrant ssh )
 2. Naviguer au dossier racine du pojet
 3. Executer script build : ./build.sh
 4. Répondre yes [Y] à la question 'Set folder permissions
-5. Si les node modules de l'admin ne sont pas installé correctement, naviguer au dossier (./plugin/AdminTheme/webroot/assets/gulp), hors la machine virtuelle, et installer normalement : npm install && gulp build
-6. Ajouter utilisateur 'superadmin' : bin/cake users addSuperuser
+5. Ajouter utilisateur 'superadmin' : bin/cake users addSuperuser
+
+# Installation de gulp ( dans le terminale de la machine hôte - hors vagrant)
+
+1. Rendre executable le fichier build-gulp.sh
+   chmod +x build-gulp.sh
+2. Executer la commande build-gulp.sh
+   ./build-gulp.sh
+3. Si les node modules de l'admin ne sont pas installé correctement, naviguer au dossier (./plugin/AdminTheme/webroot/assets/gulp), hors la machine virtuelle, et installer normalement : npm install && gulp build
 
 # Création de modules pour l'admin
 
