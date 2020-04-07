@@ -57,13 +57,8 @@
 
 	</div>
 
-
-
-
 	<?= $this->Html->script('/admin_theme/assets/dist/js/app') ?>
-	<?= $this->Html->script('/admin_theme/ckeditor/build/ckeditor') ?>
-	<?php //echo $this->Html->script('/admin_theme/ckfinder/ckfinder') 
-	?>
+	<?= $this->Html->script('/admin_theme/ckeditor/ckeditor') ?>
 
 	<?= $this->DataTables->setJs() ?>
 	<?= $this->fetch('script') ?>
