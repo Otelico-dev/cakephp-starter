@@ -1,1 +1,20 @@
+<?php
+
+$title = (!${{ singularVar }}->isNew()) ? __d('admin','Modifier {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __d('admin','Ajouter un {{ singularHumanName }}');
+
+$this->Breadcrumbs->add([
+	[
+		'title' => __d('admin', '{{pluralVar|capitalize}}'),
+		'url' => ['controller' => '{{pluralVar}}', 'action' => 'index']
+	],
+
+	[
+		'title' => $title
+	]
+]);
+
+?>
+
+<h1><?= $title; ?></h1>
+
 <?= $this->Element('../Admin/{{pluralHumanName}}/form{{pluralHumanName}}'); ?>
