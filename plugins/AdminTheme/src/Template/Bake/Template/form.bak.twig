@@ -1,35 +1,38 @@
-<?php
+<?php $this->extend('AdminTheme./Common/form'); ?>
+<?php $this->assign('entity', ${{ singularVar }}); ?>
 
-$controls = [];
+<?php $this->start('form.controls'); ?>	
+	
+	<?php
 {% for field in fields if field not in primaryKey %}
     {%- if keyFields[field] %}
         {%- set fieldData = Bake.columnData(field, schema) %}
         {%- if fieldData.null %}
-$controls['{{ field }}'] = [
-	'label' => __d('admin','{{field|humanize}}')
-	'options' => ${{ keyFields[field] }}, 
-	'empty' => true
-	];
+            echo $this->Form->control('{{ field }}', [
+				'label' => __d('admin','{{field|humanize}}')
+				'options' => ${{ keyFields[field] }}, 
+				'empty' => true
+				]);
             {{- "\n" }}
         {%- else %}
-$controls['{{ field }}'] =[
-	'label' => __d('admin','{{field|humanize}}')
-	'options' => ${{ keyFields[field] }}
-	];
+            echo $this->Form->control('{{ field }}', [
+				'label' => __d('admin','{{field|humanize}}')
+				'options' => ${{ keyFields[field] }}
+				]);
             {{- "\n" }}
         {%- endif %}
     {%- elseif field not in ['created', 'modified', 'updated'] %}
         {%- set fieldData = Bake.columnData(field, schema) %}
         {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
-$controls['{{ field }}'] = [
-	'type' => 'datepicker',
-	'empty' => true
-	];
+            echo $this->Form->control('{{ field }}', [
+				'type' => 'datepicker',
+				'empty' => true
+				]);
             {{- "\n" }}
         {%- else %}
-$controls['{{ field }}'] = [
-	'label' => __d('admin','{{field|humanize}}')
-	];
+            echo $this->Form->control('{{ field }}',[
+				'label' => __d('admin','{{field|humanize}}')
+			]);
     {{- "\n" }}
         {%- endif %}
     {%- endif %}
@@ -41,11 +44,7 @@ $controls['{{ field }}'] = [
     {{- "\n" }}
     {%- endfor %}
 {% endif %}
-
-
-echo $this->Element('AdminTheme.Forms/form', [
-		'entity' => ${{ singularVar }},
-		'controls' => $controls
-	]);
-?>
+        ?>
+		
+<?php $this->end() ?>
 
