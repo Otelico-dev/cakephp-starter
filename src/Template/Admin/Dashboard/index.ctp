@@ -1,4 +1,7 @@
-<?= $this->Form->create(null); ?>
+<?php $this->extend('AdminTheme./Common/form'); ?>
+<?php $this->assign('entity', null); ?>
+
+<?php $this->start('form.controls'); ?>
 <?= $this->Form->control('date', ['type' => 'datepicker', 'value' => new \DateTime()]) ?>
 <?=
 	$this->Form->control(
@@ -16,5 +19,14 @@
 		]
 	);
 ?>
+<?= $this->end(); ?>
 
-<?= $this->Form->end(); ?>
+<?php $this->start('form.sidebar'); ?>
+
+<?=
+	$this->Form->control('is_published', [
+		'type' => 'switch'
+	]);
+?>
+<?php $this->end() ?>
+
