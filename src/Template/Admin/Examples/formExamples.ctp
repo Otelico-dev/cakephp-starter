@@ -15,16 +15,18 @@ $controls['translated'] = [
 ];
 
 $sidebar['example_category_id'] = [
-	'label' => __d('admin', 'Example Category Id')
+	'label' => __d('admin', 'Catégorie exemple'),
+	'empty' => __d('admin', 'Choisir'),
+	'placeholder' => __d('admin', 'Choissisez un option')
 ];
 
 $sidebar['is_published'] = [
-	'label' => __d('admin', 'Is Published'),
+	'label' => __d('admin', 'Publié'),
 	'type' => 'switch'
 ];
 
 $sidebar['expiry_date'] = [
-	'label' => __d('admin', 'Expiry Date'),
+	'label' => __d('admin', 'Date d\'expiration'),
 	'type' => 'datepicker',
 	'empty' => true
 ];
