@@ -72,13 +72,37 @@ class AppController extends Controller
 				'add' => [
 					'className' => 'Crud.Add',
 					'relatedModels' => true,
+					'messages' => [
+						'success' => [
+							'text' => __d('admin', 'Enregistrement créé avec succès')
+						],
+						'error' => [
+							'text' => __d('admin', 'Impossible de créer un l\'enregistrement')
+						]
+					],
 				],
 				'edit' => [
 					'className' => 'Crud.Edit',
 					'relatedModels' => true,
+					'messages' => [
+						'success' => [
+							'text' => __d('admin', 'Enregistrement mis à jour avec succès')
+						],
+						'error' => [
+							'text' => __d('admin', 'Impossible de mettre à jour l\'enregistrement')
+						]
+					],
 				],
 				'delete' => [
 					'className' => 'Crud.Delete',
+					'messages' => [
+						'success' => [
+							'text' => __d('admin', 'Supprimé avec succès')
+						],
+						'error' => [
+							'text' => __d('admin', 'Impossible de supprimer')
+						]
+					],
 				],
 				'reorder' => [
 					'className' => '\App\Crud\Action\ReorderAction',
