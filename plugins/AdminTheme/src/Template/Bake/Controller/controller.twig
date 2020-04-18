@@ -66,6 +66,7 @@ use DataTablesAjaxRequestTrait;
 	protected function setDataTablesConfiguration()
 	{
 		$this->DataTables->createConfig('{{name}}')
+			->options(['stateSave' => true])
 			->column('{{name}}.id', ['label' => 'ID'])
 			->column('actions', ['label' => 'Actions', 'class' => 'actions', 'database' => false]);
 	}
