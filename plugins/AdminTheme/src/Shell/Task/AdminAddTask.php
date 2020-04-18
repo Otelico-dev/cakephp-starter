@@ -63,13 +63,6 @@ class AdminAddTask extends SimpleBakeTask
 		if (!class_exists($entityClass)) {
 			$entityClass = EntityInterface::class;
 		}
-		// $associations = $this->_filteredAssociations($modelObject);
-		// $keyFields = [];
-		// if (!empty($associations['BelongsTo'])) {
-		// 	foreach ($associations['BelongsTo'] as $assoc) {
-		// 		$keyFields[$assoc['foreignKey']] = $assoc['variable'];
-		// 	}
-		// }
 
 		$pluralVar = Inflector::variable($this->controllerName);
 		$pluralHumanName = $this->_pluralHumanName($this->controllerName);
