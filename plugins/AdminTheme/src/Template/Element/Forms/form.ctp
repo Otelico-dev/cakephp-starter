@@ -26,20 +26,27 @@ if ($this->exists('form.before_create')) {
 
 <div class="row">
 	<fieldset class="form__container form-group col-sm-12 <?php if ($sidebar_exists) echo 'col-md-8'; ?>">
+
 		<?php foreach ($controls as $field => $options) : ?>
 
-			<?php if ($field == 'translated') : ?>
-				<?=
-					$this->Element('AdminTheme.Forms/translated_inputs', [
-						'inputs' => $options
-					]);
-
-				?>
-			<?php else : ?>
-				<?= $this->Form->control($field, $options); ?>
-			<?php endif; ?>
+			<?=
+				$this->Element('AdminTheme.Forms/form_control', [
+					'entity' => $entity,
+					'field' => $field,
+					'options' => $options
+				]);
+			?>
 
 		<?php endforeach; ?>
+
+		<?php if (!empty($fieldsets)) : ?>
+
+			<?php foreach ($fieldsets as $fieldset) : ?>
+
+				<?= $this->Element('AdminTheme.Forms/fieldset', ['fieldset' => $fieldset, 'entity' => $entity]); ?>
+
+			<?php endforeach; ?>
+		<?php endif; ?>
 	</fieldset>
 
 	<?php if ($sidebar_exists) : ?>
