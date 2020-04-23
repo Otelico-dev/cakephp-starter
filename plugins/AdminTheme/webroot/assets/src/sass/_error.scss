@@ -1,0 +1,16 @@
+.body--error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-error {
+    width: 90%;
+    background: #fff;
+    box-shadow: 0 0 3px #ddd;
+    padding: 2rem;
+
+    @media (min-width: 640px) {
+        width: 60%;
+    }
+}

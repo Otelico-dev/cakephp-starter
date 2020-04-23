@@ -22,25 +22,22 @@
 	<title>
 		<?= $this->fetch('title') ?>
 	</title>
-	<?= $this->Html->meta('icon') ?>
-
-	<?= $this->fetch('meta') ?>
-	<?= $this->fetch('css') ?>
-	<?= $this->fetch('script') ?>
+	<?= $this->Html->css('/admin_theme/assets/dist/css/app') ?>
 </head>
 
-<body>
-	<div id="container">
-		<div id="header">
-			<h1><?= __('Error') ?></h1>
-		</div>
+<body class="body--error">
+	<div class="container-error">
+		<h1 class="text-center"><?= __d('error', 'Quelque chose a mal tourné'); ?></h1>
 		<div id="content">
 			<?= $this->Flash->render() ?>
 
 			<?= $this->fetch('content') ?>
 		</div>
 		<div id="footer">
-			<?= $this->Html->link(__('Back'), 'javascript:history.back()') ?>
+			<p class="text-center">
+				<?= $this->Html->link(__d('error', 'Retour'), 'javascript:history.back()', ['class' => 'btn btn-lg btn-primary']) ?>
+			</p>
+
 		</div>
 	</div>
 </body>
