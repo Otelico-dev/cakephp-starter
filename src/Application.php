@@ -54,7 +54,6 @@ class Application extends BaseApplication
 
 		// Load more plugins here
 		$this->addPlugin('DataTables');
-
 		$this->addPlugin('Crud');
 
 		$this->addPlugin(\CakeDC\Users\Plugin::class, [
@@ -63,19 +62,17 @@ class Application extends BaseApplication
 		]);
 		Configure::write('Users.config', ['users']);
 
-
 		$this->addPlugin('Cors', [
 			'bootstrap' => true,
 			'routes' => false
 		]);
 
 		$this->addPlugin('ADmad/I18n');
-
 		$this->addPlugin('DatabaseLog', ['bootstrap' => true]);
-
 		$this->addPlugin('LilHermit/Bootstrap4', ['bootstrap' => true]);
 		$this->addPlugin('AdminTheme');
 		$this->addPlugin('Media', ['routes' => true]);
+		$this->addPlugin('WyriHaximus/FlyPie', ['bootstrap' => true]);
 	}
 
 	/**
