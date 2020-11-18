@@ -63,6 +63,8 @@
 
 	<?= $this->DataTables->setJs() ?>
 	<?= $this->fetch('script') ?>
+	<?= $this->fetch('scriptBottom') ?>
+
 </body>
 
 </html>

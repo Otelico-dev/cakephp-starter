@@ -1,7 +1,7 @@
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
-{% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-upload fade">
+	{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload ">
         <td>
             <span class="preview"></span>
         </td>
@@ -10,20 +10,20 @@
             <strong class="error text-danger"></strong>
         </td>
         <td>
-            <p class="size"><?= __d('media','MSG_PROCESSING'); ?></p>
+            <p class="size"><?= __d('media', 'MSG_PROCESSING'); ?></p>
             <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
         </td>
         <td>
             {% if (!i && !o.options.autoUpload) { %}
                 <button class="btn btn-primary start" disabled>
                     <i class="glyphicon glyphicon-upload"></i>
-                    <span><?= __d('media','BTN_START_UPLOAD'); ?></span>
+                    <span><?= __d('media', 'BTN_START_UPLOAD'); ?></span>
                 </button>
             {% } %}
             {% if (!i) { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span><?= __d('media','BTN_CANCEL_UPLOAD'); ?></span>
+                    <span><?= __d('media', 'BTN_CANCEL_UPLOAD'); ?></span>
                 </button>
             {% } %}
         </td>
@@ -32,7 +32,7 @@
 </script>
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
-{% for (var i=0, file; file=o.files[i]; i++) { %}
+	{% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-download fade " id="file_{%=file.id%}" style="display: none">
         <td>
             <span class="preview">

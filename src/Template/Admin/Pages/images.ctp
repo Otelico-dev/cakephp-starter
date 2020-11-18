@@ -1,1 +1,1 @@
-<?= $this->Media->displayImageUploadBlock('Pages', $page->id); ?>
+<?= $this->Element('Media.uploader', ['foreign_key' => $page->id, 'model' => 'Pages']); ?>
