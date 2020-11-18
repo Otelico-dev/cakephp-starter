@@ -1,6 +1,6 @@
 <?php
 
-$title = (!${{ singularVar }}->isNew()) ? __d('admin','Modifier {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __d('admin','Ajouter un {{ singularHumanName }}');
+$title = (!${{ singularVar }}->isNew()) ? __d('admin','Modify {{ singularHumanName }}') . ' #' . ${{ singularVar }}->id : __d('admin','New {{ singularHumanName }}');
 
 $this->Breadcrumbs->add([
 	[
@@ -17,4 +17,4 @@ $this->Breadcrumbs->add([
 
 <h1><?= $title; ?></h1>
 
-<?= $this->Element('../Admin/{{pluralHumanName}}/form{{pluralHumanName}}'); ?>
+<?= $this->Element('../{{pluralHumanName}}/form{{pluralHumanName}}'); ?>

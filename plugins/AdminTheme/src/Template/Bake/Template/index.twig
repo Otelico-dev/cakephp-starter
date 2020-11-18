@@ -1,38 +1,19 @@
 <?php
+
+$this->extend('AdminTheme./Common/index_datatables');
+
 $this->Breadcrumbs->add(
 	__d('admin', '{{pluralVar|capitalize}}'),
 	['controller' => '{{pluralVar}}', 'action' => 'index']
 );
 
-?>
+$this->assign('title', __d('admin', '{{pluralVar|capitalize}}'));
 
-<h1><?= __d('admin', '{{pluralVar|capitalize}}'); ?></h1>
+$this->assign(
+	'link_add',
+	$this->Element('AdminTheme.Actions/link_add', [
+		'text' => __d('admin', 'New {{ singularHumanName }}'),
+	])
+);
 
-<p class="text-right">
-	<?= $this->Html->link(
-		'<i class="fa fa-plus"></i> ' . __d('admin','Nouveau {{ singularHumanName }}'),
-		[
-			'action' => 'add'
-			],
-		[
-			'escape' => false, 
-			'class' => 'btn btn-success btn-lg'
-			]
-	); ?>
-</p>
-
-<div id="clients_index" class="table_wrapper">
-
-	<div class="table-responsive">
-		<?=
-			$this->DataTables->render(
-				'{{ pluralVar|camelize }}',
-				[
-					'class' => 'table table-striped',
-
-				]
-			)
-		?>
-	</div>
-
-</div>
+$this->assign('datatables_variable', '{{pluralVar|capitalize}}');
