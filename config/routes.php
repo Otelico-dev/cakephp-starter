@@ -121,6 +121,14 @@ Router::prefix('admin', function ($routes) {
 		$routes->connect('/:controller', ['plugin' => 'Media', 'prefix' => false]);
 	});
 
+	$routes->connect('/meta-data/:action/:id', [
+		'plugin' => 'AdminTheme',
+		'controller' => 'MetaData'
+	])
+		->setPatterns(['id' => '\d+'])
+		->setPass(['id']);
+
+
 	$routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
 
 	$routes->fallbacks(DashedRoute::class);

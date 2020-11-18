@@ -1,0 +1,48 @@
+<?php
+
+namespace AdminTheme\Controller\Component;
+
+use Cake\Controller\Component;
+
+
+/**
+ * MetaData component
+ */
+class MetaComponent extends Component
+{
+	/**
+	 * Default configuration.
+	 *
+	 * @var array
+	 */
+	protected $_defaultConfig = [];
+
+	protected $_controller;
+
+	public function initialize(array $config)
+	{
+		$this->_controller = $this->getController();
+		$this->_controller->loadModel('AdminTheme.MetaData');
+	}
+
+	public function setMetaData($action = 'index', $identifier = NULL)
+	{
+
+		$conditions = [
+			'controller' => $this->getController()->name,
+			'action' => $action
+		];
+		if (!empty($identifier)) {
+			$conditions['identifier'] = $identifier;
+		}
+
+		$meta_data = $this->_controller->MetaData->find()
+			->where($conditions)
+			->first();
+
+		$this->_controller->set('controller', $this->getController()->name);
+		$this->_controller->set('action', $action);
+
+		$this->_controller->set('metaData', $meta_data);
+	}
+}

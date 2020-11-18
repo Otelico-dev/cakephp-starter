@@ -40,5 +40,6 @@ class ExamplesController extends AppController
 	public function index()
 	{
 		$this->DataTables->setViewVars('Examples');
+		$this->Meta->setMetaData();
 	}
 }

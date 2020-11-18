@@ -115,6 +115,7 @@ class AppController extends Controller
 		]);
 
 		$this->loadComponent('AdminTheme.Translate');
+		$this->loadComponent('AdminTheme.Meta');
 
 		if (Configure::read('I18n')) {
 

@@ -2,10 +2,10 @@
 
 $sidebar_exists = isset($sidebar);
 
-$options = [];
-if ($this->exists('form.options')) {
-	$options = $this->fetch('form.options');
-}
+// $options = [];
+// if ($this->exists('form.options')) {
+// 	$options = $this->fetch('form.options');
+// }
 ?>
 
 <?php
@@ -16,7 +16,7 @@ if ($this->exists('form.before_create')) {
 
 ?>
 
-<?= $this->Form->create($entity, $options); ?>
+<?= $this->Form->create($entity, $options ?? []); ?>
 
 <?php if ($this->exists('form.after_create')) : ?>
 	<?= $this->fetch('form.after_create'); ?>
