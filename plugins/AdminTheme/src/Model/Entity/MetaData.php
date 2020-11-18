@@ -1,4 +1,5 @@
 <?php
+
 namespace AdminTheme\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -19,24 +20,24 @@ use Cake\ORM\Entity;
  */
 class MetaData extends Entity
 {
-    /**
-     * Fields that can be mass assigned using newEntity() or patchEntity().
-     *
-     * Note that when '*' is set to true, this allows all unspecified fields to
-     * be mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove it), and explicitly make individual fields accessible as needed.
-     *
-     * @var array
-     */
-    protected $_accessible = [
-        'title' => true,
-        'introduction' => true,
-        'outroduction' => true,
-        'meta_title' => true,
-        'meta_description' => true,
-        'controller' => true,
-        'action' => true,
-        'created' => true,
-        'modified' => true,
-    ];
+	/**
+	 * Fields that can be mass assigned using newEntity() or patchEntity().
+	 *
+	 * Note that when '*' is set to true, this allows all unspecified fields to
+	 * be mass assigned. For security purposes, it is advised to set '*' to false
+	 * (or remove it), and explicitly make individual fields accessible as needed.
+	 *
+	 * @var array
+	 */
+	protected $_accessible = [
+		'title' => true,
+		'introduction' => true,
+		'outroduction' => true,
+		'meta_title' => true,
+		'meta_description' => true,
+		'controller' => true,
+		'action' => true,
+		'created' => false,
+		'modified' => false,
+	];
 }

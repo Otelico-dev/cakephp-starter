@@ -1,3 +1,9 @@
+<?php if ($link_add = $this->fetch('link_add')) : ?>
+	<p class="text-right">
+		<?= $link_add; ?>
+	</p>
+<?php endif; ?>
+
 <div class="index index-<?= strtolower($this->request->controller) ?> table_wrapper">
 
 	<div class="table-responsive">

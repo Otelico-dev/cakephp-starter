@@ -1,38 +1,19 @@
 <?php
+
+$this->extend('AdminTheme./Common/index_datatables_with_meta_data');
+
 $this->Breadcrumbs->add(
 	__d('admin', 'Catégories exemples'),
 	['controller' => 'exampleCategories', 'action' => 'index']
 );
 
-?>
+$this->assign('title', __d('admin', 'Catégories exemples'));
 
-<h1><?= __d('admin', 'Catégories exemples'); ?></h1>
+$this->assign(
+	'link_add',
+	$this->Element('AdminTheme.Actions/link_add', [
+		'text' => __d('admin', 'Nouvelle catégorie exemple'),
+	])
+);
 
-<p class="text-right">
-	<?= $this->Html->link(
-		'<i class="fa fa-plus"></i> ' . __d('admin', 'Nouvelle catégorie exemple'),
-		[
-			'action' => 'add'
-		],
-		[
-			'escape' => false,
-			'class' => 'btn btn-success btn-lg'
-		]
-	); ?>
-</p>
-
-<div id="clients_index" class="table_wrapper">
-
-	<div class="table-responsive">
-		<?=
-			$this->DataTables->render(
-				'ExampleCategories',
-				[
-					'class' => 'table table-striped',
-
-				]
-			)
-		?>
-	</div>
-
-</div>
+$this->assign('datatables_variable', 'ExampleCategories');

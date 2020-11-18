@@ -37,5 +37,6 @@ class ExampleCategoriesController extends AppController
 	public function index()
 	{
 		$this->DataTables->setViewVars('ExampleCategories');
+		$this->Meta->setMetaData();
 	}
 }

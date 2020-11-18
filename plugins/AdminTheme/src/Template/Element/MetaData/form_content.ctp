@@ -6,10 +6,12 @@ $controls['title'] = [
 ];
 $controls['introduction'] = [
 	'label' => __d('admin', 'Introduction'),
+	'type' => 'textarea',
 	'rich_text' => true
 ];
 $controls['outroduction'] = [
 	'label' => __d('admin', 'Outroduction'),
+	'type' => 'textarea',
 	'rich_text' => true
 ];
 $controls['controller'] = [
