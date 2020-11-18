@@ -37,6 +37,7 @@ class MetaData extends Entity
 		'meta_description' => true,
 		'controller' => true,
 		'action' => true,
+		'identifier' => true,
 		'created' => false,
 		'modified' => false,
 		'_translations' => true

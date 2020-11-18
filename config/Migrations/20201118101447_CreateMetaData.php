@@ -47,6 +47,12 @@ class CreateMetaData extends AbstractMigration
 			'limit' => 200,
 			'null' => true,
 		]);
+		$table->addColumn('identifier', 'integer', [
+			'default' => null,
+			'limit' => 11,
+			'null' => true,
+
+		]);
 		$table->addColumn('created', 'datetime', [
 			'default' => null,
 			'null' => false,
