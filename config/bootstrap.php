@@ -206,4 +206,13 @@ Type::build('timestamp')
 /**
  * Configure accepted languages
  */
-Configure::load('i18n', 'default');
+
+if (file_exists(__DIR__ . '/i18n.php')) {
+
+	Configure::load('i18n', 'default');
+}
+
+/**
+ * Load modules config
+ */
+Configure::load('modules', 'default');

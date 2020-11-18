@@ -142,5 +142,7 @@ class AppController extends Controller
 		if (isset($this->accepted_languages)) {
 			$this->set('accepted_languages', $this->accepted_languages);
 		}
+
+		$this->set('module_navigation', Configure::read('modules'));
 	}
 }

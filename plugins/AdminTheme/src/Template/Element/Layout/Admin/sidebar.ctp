@@ -7,5 +7,5 @@
 
 
 <nav class="module-navigation">
-	<?= $this->Element('Layout/Admin/module_navigation', [], ['ignoreMissing' => true]) ?>
+	<?= $this->Element('AdminTheme.Layout/Admin/module_navigation', [], ['ignoreMissing' => true]) ?>
 </nav>
