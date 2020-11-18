@@ -24,6 +24,11 @@ class CreatePages extends AbstractMigration
 			'null' => true,
 		]);
 		$table->addColumn('is_published', 'string', [
+			'default' => 'true',
+			'limit' => 5,
+			'null' => true,
+		]);
+		$table->addColumn('is_home', 'string', [
 			'default' => null,
 			'limit' => 5,
 			'null' => true,

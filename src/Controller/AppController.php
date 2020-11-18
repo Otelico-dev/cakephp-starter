@@ -49,6 +49,8 @@ class AppController extends Controller
 		]);
 		$this->loadComponent('Flash');
 
+		$this->loadComponent('AdminTheme.Meta');
+
 		/*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
