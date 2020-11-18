@@ -3,6 +3,7 @@
 namespace AdminTheme\Controller\Admin;
 
 use AdminTheme\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * MetaData Controller

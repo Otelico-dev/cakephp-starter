@@ -14,6 +14,31 @@ $controls['outroduction'] = [
 	'type' => 'textarea',
 	'rich_text' => true
 ];
+
+if (isset($translate)) {
+
+	$controls = [
+		'translated' => [
+			[
+				'name' => 'title',
+				'label' => __d('admin', 'Titre')
+			],
+			[
+				'name' => 'introduction',
+				'label' => __d('admin', 'Introduction'),
+				'type' => 'textarea',
+				'rich_text' => true
+			],
+			[
+				'name' => 'outroduction',
+				'label' => __d('admin', 'Outroduction'),
+				'type' => 'textarea',
+				'rich_text' => true
+			]
+		]
+	];
+}
+
 $controls['controller'] = [
 	'label' => false,
 	'type' => 'hidden',

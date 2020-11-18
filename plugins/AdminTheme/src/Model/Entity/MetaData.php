@@ -39,5 +39,6 @@ class MetaData extends Entity
 		'action' => true,
 		'created' => false,
 		'modified' => false,
+		'_translations' => true
 	];
 }

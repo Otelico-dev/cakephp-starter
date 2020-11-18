@@ -3,7 +3,7 @@
 namespace AdminTheme\Controller\Component;
 
 use Cake\Controller\Component;
-
+use Cake\Core\Configure;
 
 /**
  * MetaData component
@@ -36,7 +36,14 @@ class MetaComponent extends Component
 			$conditions['identifier'] = $identifier;
 		}
 
-		$meta_data = $this->_controller->MetaData->find()
+		$find_type = 'all';
+
+		if (Configure::read('I18n')) {
+			$this->_controller->set('translate', true);
+			$find_type = 'translations';
+		}
+
+		$meta_data = $this->_controller->MetaData->find($find_type)
 			->where($conditions)
 			->first();
 

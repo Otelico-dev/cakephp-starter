@@ -1,6 +1,8 @@
 <?php
 
 $controls = [];
+
+
 $controls['meta_title'] = [
 	'label' => __d('admin', 'Meta Titre')
 ];
@@ -8,6 +10,25 @@ $controls['meta_description'] = [
 	'label' => __d('admin', 'Meta Description'),
 	'type' => 'textarea'
 ];
+
+if (isset($translate)) {
+
+	$controls = [
+		'translated' => [
+			[
+				'name' => 'meta_title',
+				'label' => __d('admin', 'Meta Titre')
+			],
+			[
+				'name' => 'meta_description',
+				'label' => __d('admin', 'Meta Description'),
+				'type' => 'textarea'
+			]
+		]
+	];
+}
+
+
 $controls['controller'] = [
 	'label' => false,
 	'type' => 'hidden',

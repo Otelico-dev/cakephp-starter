@@ -19,7 +19,8 @@
 					<?php
 					foreach ($inputs as $input) {
 						echo $this->Form->control('_translations.' . $language['locale'] . '.' . $input['name'], [
-							'label' => $input['label']
+							'label' => $input['label'],
+							'type' => $input['type'] ?? ''
 						]);
 
 						if (isset($input['rich_text'])) {

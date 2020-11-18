@@ -6,8 +6,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-use Cake\Event\Event;
-use Cake\Datasource\EntityInterface;
+use Cake\Core\Configure;
 
 /**
  * MetaData Model
@@ -40,6 +39,18 @@ class MetaDataTable extends Table
 		$this->setPrimaryKey('id');
 
 		$this->addBehavior('Timestamp');
+
+		if (Configure::read('I18n')) {
+			$this->addBehavior('Translate', [
+				'fields' => [
+					'title',
+					'introduction',
+					'outroduction',
+					'meta_title',
+					'meta_description'
+				]
+			]);
+		}
 	}
 
 	/**
