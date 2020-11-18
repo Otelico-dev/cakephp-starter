@@ -121,6 +121,11 @@ Router::prefix('admin', function ($routes) {
 		$routes->connect('/:controller', ['plugin' => 'Media', 'prefix' => false]);
 	});
 
+	$routes->connect('/meta-data/:action', [
+		'plugin' => 'AdminTheme',
+		'controller' => 'MetaData'
+	]);
+
 	$routes->connect('/meta-data/:action/:id', [
 		'plugin' => 'AdminTheme',
 		'controller' => 'MetaData'
