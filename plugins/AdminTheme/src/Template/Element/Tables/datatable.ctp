@@ -27,3 +27,26 @@
 	$this->Html->scriptEnd();
 	?>
 <?php endif; ?>
+
+<?php if ($toggle = $this->fetch('toggle')) : ?>
+
+	<?php $this->start('scriptBottom');
+	?>
+
+	<script>
+		$('#dt<?= $this->Fetch('datatables_variable'); ?>').on('draw.dt', function() {
+
+			$('[data-toggle="<?= $toggle; ?>"]').bootstrapToggle();
+
+			$('[data-toggle="<?= $toggle; ?>"]').change(function(e) {
+
+				e.stopPropagation();
+				$.post($(this).data('target'));
+
+			});
+		});
+	</script>
+
+	<?php $this->end(); ?>
+
+<?php endif; ?>

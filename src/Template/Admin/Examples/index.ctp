@@ -17,3 +17,5 @@ $this->assign(
 );
 
 $this->assign('datatables_variable', 'Examples');
+
+$this->assign('toggle', 'toggle');

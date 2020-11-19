@@ -55,7 +55,7 @@ class AppController extends Controller
 		$this->loadComponent('Security');
 
 		$this->Security->setConfig([
-			'unlockedActions' => ['reorder'],
+			'unlockedActions' => ['reorder', 'publish'],
 			'unlockedFields' => ['is_published']
 		]);
 
@@ -106,6 +106,9 @@ class AppController extends Controller
 				],
 				'reorder' => [
 					'className' => '\App\Crud\Action\ReorderAction',
+				],
+				'publish' => [
+					'className' => '\App\Crud\Action\PublishAction',
 				],
 			],
 			'listeners' => [

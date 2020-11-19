@@ -33,12 +33,15 @@ class ExamplesController extends AppController
 			])
 			->column('Examples.id', ['label' => 'ID'])
 			->column('Examples.title', ['label' => 'Title'])
+			->column('Examples.is_published', ['label' => 'Published'])
+
 			->column('actions', ['label' => 'Actions', 'class' => 'actions', 'database' => false])
 			->finder('position');
 	}
 
 	public function index()
 	{
+
 		$this->DataTables->setViewVars('Examples');
 		$this->Meta->setMetaData();
 	}
