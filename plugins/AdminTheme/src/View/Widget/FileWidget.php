@@ -60,13 +60,15 @@ class FileWidget implements WidgetInterface
 
 	protected function getHtml(array $data)
 	{
-		$html = <<<html
+
+		$html = $this->getFile($data);
+		$html .= <<<html
 			<div class="custom-file">
 				<input type="file" id="{$data['id']}" name="{$data['name']}" value="true" class="custom-file-input" />
 				<label class="custom-file-label">Choisir fichier</label>
 			</div>		
 html;
-		$html .= $this->getFile($data);
+
 		return $html;
 	}
 
@@ -101,7 +103,7 @@ html;
 	{
 
 		$html = <<<html
-			<img src="/image/{$data['val']['file_path']}/m_cropwidth_200/{$data['val']['file']}" />
+			<p><img src="/image/{$data['val']['file_path']}/m_cropwidth_200/{$data['val']['file']}" /></p>
 html;
 		return $html;
 	}
