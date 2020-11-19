@@ -39,7 +39,6 @@ class File
 
 		$this->uploads_dir = '../uploads' . $this->ds;
 
-		// Check uploads folder exists, exit script if not
 		if (!is_dir($this->uploads_dir)) {
 			exit();
 		}
@@ -62,24 +61,10 @@ class File
 			return false;
 		}
 
-		// var_dump($this->filename);
-		// var_dump($this->filepath);
-		// var_dump($this->manipulation);
-
 		$this->setParameters();
 
-		// if (file_exists($this->cache_dir . $this->filename)) {
-
-		// 	$this->handle = new Upload($this->cache_dir . $this->filename);
-
-		// 	$this->display();
-
-		// 	exit();
-		// }
-
-		// var_dump($this->uploads_dir.$this->filepath.$this->ds.$this->filename);
 		$this->handle = new Upload($this->uploads_dir . $this->filepath . $this->ds . $this->filename);
-		// var_dump($this->handle);exit();
+
 		if ($this->handle->uploaded) {
 
 			if ($this->width) $this->setWidth();
@@ -111,12 +96,12 @@ class File
 		$uri_parts = explode('/', $_GET['uri']);
 
 		foreach ($uri_parts as $key => $value) {
+
 			if ($value == '' || $value == 'image') {
 				unset($uri_parts[$key]);
 			}
 
-			if (strpos($value, 'm_') !== false) {
-				// $manipulation_parts = explode(',', $value);
+			if (substr($value, 0, 2) === 'm_') {
 
 				$this->manipulation = explode('_', $value);
 				unset($uri_parts[$key]);
@@ -275,7 +260,7 @@ class File
 	 */
 	private function display()
 	{
-		// echo 'display';exit();
+
 		header('Content-type: ' . $this->handle->file_src_mime);
 		header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + $this->offset));
 		echo $this->handle->Process();
