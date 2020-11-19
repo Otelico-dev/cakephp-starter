@@ -173,6 +173,7 @@ class MediasController extends AppController
 		$data = [
 			'model' => $model,
 			'foreign_key' => $foreign_key,
+			'field_type' => 'multiple'
 		];
 
 		$media = $this->Medias->newEntity();
