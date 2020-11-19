@@ -96,7 +96,9 @@ $this->Html->script($file_upload_scripts, ['block' => true]);
 		/**
 		 * Delete images from gallery
 		 */
-		$('body').on('click', '.delete_image', function() {
+		$('body').on('click', '.delete_image', function(e) {
+
+			e.preventDefault();
 
 			var link = $(this);
 			var href = link.attr('href');
