@@ -65,15 +65,6 @@ class MediasController extends AppController
 			return true;
 		}
 
-		if ($user['role'] == 'member' && $model == 'hotels') {
-			$this->loadModel('Hotels');
-			$hotel = $this->Hotels->get($foreign_key);
-
-			if ($hotel->user_id == $user['id']) {
-				return true;
-			}
-		}
-
 		return false;
 	}
 
@@ -84,8 +75,14 @@ class MediasController extends AppController
 	 */
 	public function index()
 	{
-		$model = (isset($this->request->query['model'])) ? $this->request->query['model'] : false;
-		$foreign_key = (isset($this->request->query['foreign_key']) && is_numeric($this->request->query['foreign_key'])) ? $this->request->query['foreign_key'] : false;
+		$model = (isset($this->request->query['model']))
+			? $this->request->query['model']
+			: false;
+
+		$foreign_key = (isset($this->request->query['foreign_key'])
+			&& is_numeric($this->request->query['foreign_key']))
+			? $this->request->query['foreign_key']
+			: false;
 
 		if (!$model || !$foreign_key) {
 			throw new NotFoundException();
@@ -169,8 +166,16 @@ class MediasController extends AppController
 	 */
 	public function upload()
 	{
-		$model = (isset($this->request->query['model'])) ? $this->request->query['model'] : false;
-		$foreign_key = (isset($this->request->query['foreign_key']) && is_numeric($this->request->query['foreign_key'])) ? $this->request->query['foreign_key'] : false;
+
+		$this->autoRender = false;
+
+		$model = (isset($this->request->query['model']))
+			? $this->request->query['model']
+			: false;
+
+		$foreign_key = (isset($this->request->query['foreign_key']) && is_numeric($this->request->query['foreign_key']))
+			? $this->request->query['foreign_key']
+			: false;
 
 		if (!$model || !$foreign_key) {
 			throw new NotFoundException();
@@ -180,18 +185,21 @@ class MediasController extends AppController
 			throw new ForbiddenException();
 		}
 
-		$this->autoRender = false;
-
 		$data = [
 			'model' => $model,
 			'foreign_key' => $foreign_key,
 		];
+
 		$media = $this->Medias->newEntity();
+
 		$media = $this->Medias->patchEntity($media, $data);
+
 		$this->Medias->setFileHandle($this->request->data['files'][0]);
+
 		$media->tmp_name = $this->request->data['files'][0]['tmp_name'];
 
 		if ($this->Medias->save($media, $this->request->data)) {
+
 			$result['url'] = '/image/' . strtolower($media->model) . '/' . $media->foreign_key . '/' . $media->file;
 			$result['media_list_url'] = '/image/' . strtolower($media->model) . '/' . $media->foreign_key . '/m_cropwidth_200/' . $media->file;
 			$result['thumbnailUrl'] = '/image/' . strtolower($media->model) . '/' . $media->foreign_key . '/m_width_100/' . $media->file;
@@ -204,6 +212,7 @@ class MediasController extends AppController
 			$result['width'] = $media->width;
 			$result['height'] = $media->height;
 		} else {
+
 			$errors = $media->getErrors();
 
 			if (isset($errors['upload'])) {

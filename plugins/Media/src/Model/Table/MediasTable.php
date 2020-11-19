@@ -15,8 +15,6 @@ require_once ROOT . '/plugins/Media/src/Vendor/Upload/class.upload.php';
 
 use Media\Vendor\Upload;
 
-// use Media\Vendor\Upload;
-
 /**
  * Medias Model.
  *
@@ -32,8 +30,6 @@ class MediasTable extends Table
 		'image/pjpeg',
 		'image/png',
 		'application/pdf'
-		// 'image/vnd.microsoft.icon',
-		// 'image/x-icon',
 	);
 
 	protected $uploads_dir = ROOT . DS . 'uploads';
@@ -109,15 +105,12 @@ class MediasTable extends Table
 	protected function uploadFile(Entity $entity)
 	{
 
-
-
 		if ($entity->field_type != 'field') {
 			$entity->position = $this->setPosition($entity);
 		}
 
-
 		try {
-			// $this->setFileHandle($options);
+
 			$this->checkForUploadedFileErrors($entity->tmp_name);
 
 			if ($entity->field_type != 'field') {
