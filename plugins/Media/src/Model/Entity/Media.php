@@ -44,11 +44,7 @@ class Media extends Entity
 	{
 		if (isset($this->file)) {
 			$extension = \pathinfo($this->file, PATHINFO_EXTENSION);
-			if (!\in_array($extension, $this->pictures)) {
-				return $this->type = $extension;
-			} else {
-				return $this->type = 'pic';
-			}
+			return $this->type = $extension;
 		}
 	}
 
