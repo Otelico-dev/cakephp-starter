@@ -7,10 +7,6 @@ use Cake\Network\Exception\BadRequestException;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 
-require_once ROOT . '/plugins/Media/src/Vendor/Upload/class.upload.php';
-
-use Media\Vendor\Upload;
-
 /**
  * Medias Controller.
  *
@@ -19,20 +15,7 @@ use Media\Vendor\Upload;
  */
 class MediasController extends AppController
 {
-	protected $_imageMimetypes = array(
-		'image/bmp',
-		'image/gif',
-		'image/jpeg',
-		'image/pjpeg',
-		'image/png',
-		// 'image/vnd.microsoft.icon',
-		// 'image/x-icon',
-	);
 
-	protected $_mediaMimetypes = array(
-		'application/pdf',
-		'application/postscript',
-	);
 
 	/**
 	 * @param \Cake\Event\Event $event
@@ -40,7 +23,9 @@ class MediasController extends AppController
 	public function beforeFilter(Event $event)
 	{
 		parent::beforeFilter($event);
+
 		$this->viewBuilder()->layout('uploader');
+
 		if (in_array('Security', $this->components()->loaded())) {
 			$this->Security->config('unlockedActions', ['index', 'edit', 'upload', 'order', 'thumb', 'update', 'delete']);
 		}
@@ -54,7 +39,7 @@ class MediasController extends AppController
 	 */
 	public function canUploadMedias($model, $foreign_key)
 	{
-		return true;
+		// return true;
 		$user = $this->request->session()->read('Auth.User');
 
 		if (empty($user)) {
