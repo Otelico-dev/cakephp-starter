@@ -10,7 +10,7 @@ use Cake\View\Widget\WidgetInterface;
 // use DateTimeInterface;
 // use DateTimeZone;
 
-class DatePickerWidget implements WidgetInterface
+class TimePickerWidget implements WidgetInterface
 {
 
 	/**
@@ -30,8 +30,9 @@ class DatePickerWidget implements WidgetInterface
 		$type = $data['type'];
 		$required = $data['required'] ? 'required' : '';
 		$disabled = isset($data['disabled']) && $data['disabled'] ? 'disabled' : '';
+
 		$div_class = 'input-group';
-		$input_class = 'form-control datepicker';
+		$input_class = 'form-control timepicker';
 
 		if ($context->hasError($data['name'])) {
 			$input_class .= ' is-invalid';
@@ -40,14 +41,13 @@ class DatePickerWidget implements WidgetInterface
 
 		if (
 			$val
-			&& ($val instanceof \Cake\I18n\FrozenDate || $val instanceof \DateTime)
+			&& ($val instanceof \Cake\I18n\FrozenTime)
 		) {
-			$val = $val->format($type === 'date' ? 'Y-m-d' : 'Y-m-d H:i:s');
+			$val = $val->format($type === 'time' ? 'HH:MM' : 'H:i:s');
 		}
 
-
-		$icon = $type === 'time'
-			? 'time'
+		$icon = $type === 'timepicker'
+			? 'clock-o'
 			: 'calendar';
 
 		$widget = <<<html

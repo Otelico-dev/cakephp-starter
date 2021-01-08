@@ -25,7 +25,7 @@ class TranslateComponent extends Component
 
 
 		if (
-			($this->controller->request->action == 'add' || $this->controller->request->action == 'edit')
+			($this->controller->request->getParam('action') == 'add' || $this->controller->request->getParam('action') == 'edit')
 			&& $this->model->behaviors()->has('Translate')
 		) {
 

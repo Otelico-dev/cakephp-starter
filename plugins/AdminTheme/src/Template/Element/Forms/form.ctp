@@ -52,7 +52,15 @@ if ($this->exists('form.before_create')) {
 	<?php if ($sidebar_exists) : ?>
 		<fieldset class="form__container--sidebar form-group col-sm-12 col-md-4">
 			<?php foreach ($sidebar as $field => $options) : ?>
-				<?= $this->Form->control($field, $options); ?>
+
+				<?=
+					$this->Element('AdminTheme.Forms/form_control', [
+						'entity' => $entity,
+						'field' => $field,
+						'options' => $options
+					]);
+				?>
+
 			<?php endforeach; ?>
 		</fieldset>
 	<?php endif; ?>

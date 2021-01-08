@@ -15,11 +15,12 @@
 
 namespace AdminTheme\View;
 
-use LilHermit\Bootstrap4\View\BootstrapViewTrait;
 use App\View\AppView;
-use AdminTheme\View\Widget\DatePickerWidget;
-use AdminTheme\View\Widget\SwitchWidget;
 use AdminTheme\View\Widget\FileWidget;
+use AdminTheme\View\Widget\SwitchWidget;
+use AdminTheme\View\Widget\DatePickerWidget;
+use AdminTheme\View\Widget\TimePickerWidget;
+use LilHermit\Bootstrap4\View\BootstrapViewTrait;
 
 
 // use AdminTheme\View\Widget\ComboboxWidget;
@@ -66,6 +67,8 @@ class AdminAppView extends AppView
 		$datePickerWidget = new DatePickerWidget($this->Form->templater());
 		$this->Form->addWidget('datepicker', $datePickerWidget);
 
+		$timePickerWidget = new TimePickerWidget($this->Form->templater());
+		$this->Form->addWidget('timepicker', $timePickerWidget);
 
 		$this->Form->addWidget('switch', new SwitchWidget($this->Form->templater()));
 
@@ -79,7 +82,7 @@ class AdminAppView extends AppView
 			'className' => 'Media.Media'
 		]);
 
-		$this->Breadcrumbs->templates([
+		$this->Breadcrumbs->setTemplates([
 			'wrapper' => '<nav class="breadcrumb-container"><ol class="breadcrumb"{{attrs}}>{{content}}</ol></nav>',
 			'item' => '<li class="breadcrumb-item"><a href="{{url}}"{{innerAttrs}}>{{title}}</a></li>{{separator}}',
 			'itemWithoutLink' => '<li class="breadcrumb-item"><span{{innerAttrs}}>{{title}}</span></li>{{separator}}',

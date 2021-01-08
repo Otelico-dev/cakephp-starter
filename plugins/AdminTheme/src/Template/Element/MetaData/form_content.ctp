@@ -53,7 +53,9 @@ $controls['action'] = [
 $controls['redirect_url'] = [
 	'label' => false,
 	'type' => 'hidden',
-	'value' => (isset($redirect_url)) ? $this->Url->build($redirect_url) : $this->Url->build(['controller' => $this->request->controller])
+	'value' => (isset($redirect_url))
+		? $this->Url->build($redirect_url)
+		: $this->Url->build(['controller' => $this->request->getParam('controller')])
 ];
 
 echo $this->Element('AdminTheme.Forms/form', [

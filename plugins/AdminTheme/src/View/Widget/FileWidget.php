@@ -16,6 +16,7 @@
 
 namespace AdminTheme\View\Widget;
 
+use Cake\Core\Configure;
 use Cake\View\Form\ContextInterface;
 use Cake\View\Widget\WidgetInterface;
 
@@ -66,7 +67,7 @@ class FileWidget implements WidgetInterface
 			<div class="custom-file">
 				<input type="file" id="{$data['id']}" name="{$data['name']}" value="true" class="custom-file-input" />
 				<label class="custom-file-label">Choisir fichier</label>
-			</div>		
+			</div>
 html;
 
 		return $html;
@@ -101,9 +102,9 @@ html;
 
 	protected function getImageHtml(array $data)
 	{
-
+		$image_cache_dir = Configure::read('image_cache_dir');
 		$html = <<<html
-			<p><img src="/image/{$data['val']['file_path']}/m_cropwidth_200/{$data['val']['file']}" /></p>
+			<p><img src="{$data['val']['file_path']}m_cropwidth_300/{$data['val']['file']}" /></p>
 html;
 		return $html;
 	}
@@ -111,7 +112,7 @@ html;
 	protected function getFileHtml(array $data)
 	{
 		$html = <<<html
-			<p>Fichier : <a href="/image/{$data['val']['file_path']}/{$data['val']['file']}" />{$data['val']['file']}</a></p>
+			<p>Fichier : <a href="{$data['val']['file_path']}/{$data['val']['file']}" />{$data['val']['file']}</a></p>
 html;
 		return $html;
 	}

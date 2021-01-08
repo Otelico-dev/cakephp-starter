@@ -17,7 +17,7 @@ class PositionableBehavior extends Behavior
 
 	public function findPosition(Query $query, array $options)
 	{
-		$config = $this->config();
+		$config = $this->getConfig();
 		return $query->order([$this->_table->aliasField($config['field']) => 'ASC']);
 	}
 
@@ -27,13 +27,18 @@ class PositionableBehavior extends Behavior
 		$config = $this->config();
 
 		if ($entity->isNew()) {
-			$max_position = $this->_table->find()
-				->select([
-					$this->_table->aliasField($config['field']) => 'MAX(' . $config['field'] . ')'
-				])
-				->first();
 
-			$entity->{$config['field']} = $max_position[$config['field']] + 1;
+			$query = $this->_table->find();
+
+			$query->select([
+				'max_position' => $query->func()->max(
+					$this->_table->aliasField($config['field'])
+				)
+			]);
+
+			$position = $query->first();
+
+			$entity->{$config['field']} = $position->max_position + 1;
 		}
 	}
 }

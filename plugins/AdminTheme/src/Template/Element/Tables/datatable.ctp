@@ -4,7 +4,7 @@
 	</p>
 <?php endif; ?>
 
-<div class="index index-<?= strtolower($this->request->controller) ?> table_wrapper">
+<div class="index index-<?= strtolower($this->request->getParam('controller')) ?> table_wrapper">
 
 	<div class="table-responsive">
 		<?=

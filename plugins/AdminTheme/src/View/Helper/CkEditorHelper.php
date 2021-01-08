@@ -15,7 +15,12 @@ class CkEditorHelper extends Helper
 
 		$lang = 'fr_FR';
 		$editor_js = <<<JAVASCRIPT
-			CKEDITOR.replace('$id', { language: '$lang', scayt_sLang: '$lang'} ); 
+
+			CKEDITOR.replace('$id', { 
+				language: '$lang', 
+				scayt_sLang: '$lang',
+				height: 600
+			}); 
 			
 JAVASCRIPT;
 
@@ -24,6 +29,7 @@ JAVASCRIPT;
 
 	protected function openFileBrowserInModal()
 	{
+		$file_manager_url = FILE_MANAGER_URL;
 
 		return <<<JS
             CKEDITOR.on('dialogDefinition', function(event) {
@@ -54,7 +60,7 @@ JAVASCRIPT;
                             editor._.filebrowserSe = this;
                             
                             var iframe = $("<iframe id='filemanager_iframe' class='fm-modal'/>").attr({
-                                src: '/admin_theme/ckeditor/plugins/filemanager/dialog.php?type=2&popup=1&editor=ckeditor' + // Change it to wherever  Filemanager is stored.
+                                src: '$file_manager_url&editor=ckeditor' + // Change it to wherever  Filemanager is stored.
                                     '&CKEditorFuncNum=' + CKEDITOR.instances[event.editor.name]._.filebrowserFn +
                                     '&CKEditorCleanUpFuncNum=' + cleanUpFuncRef +
                                     '&langCode=fr' +

@@ -29,7 +29,7 @@ class MetaComponent extends Component
 	{
 
 		$conditions = [
-			'controller' => $this->getController()->name,
+			'controller' => $this->getController()->getName(),
 			'action' => $action
 		];
 		if (!empty($identifier)) {
@@ -47,7 +47,7 @@ class MetaComponent extends Component
 			->where($conditions)
 			->first();
 
-		$this->_controller->set('controller', $this->getController()->name);
+		$this->_controller->set('controller', $this->getController()->getName());
 		$this->_controller->set('action', $action);
 
 		$this->_controller->set('metaData', $meta_data);

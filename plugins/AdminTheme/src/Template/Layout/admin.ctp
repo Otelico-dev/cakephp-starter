@@ -22,41 +22,45 @@
 </head>
 
 <body>
-	<!-- <header>
-		<div class="container-fluid">
-			<?= $this->Element('AdminTheme.Layout/Admin/header') ?>
+	<header>
+
+		<?= $this->Element('AdminTheme.Layout/Admin/header') ?>
+
+	</header>
+
+	<div class="container-main-content">
+
+		<aside class="sidebar">
+
+			<?= $this->Element('AdminTheme.Layout/Admin/sidebar') ?>
+		</aside>
+
+		<div class="content-wrapper">
+
+			<?php
+
+			$this->Breadcrumbs->prepend(
+				__d('admin', 'Tableau de bord'),
+				['controller' => 'dashboard', 'action' => 'index']
+			);
+
+			echo $this->Breadcrumbs->render();
+
+			?>
+
+			<main class="container-fluid">
+				<div class="container-content">
+					<?= $this->Flash->render() ?>
+					<?= $this->fetch('content') ?>
+				</div>
+			</main>
 		</div>
-	</header> -->
-	<aside class="sidebar">
-
-		<?= $this->Element('AdminTheme.Layout/Admin/sidebar') ?>
-	</aside>
-
-	<div class="content-wrapper">
-
-		<?php
-
-		$this->Breadcrumbs->prepend(
-			__d('admin', 'Tableau de bord'),
-			['controller' => 'dashboard', 'action' => 'index']
-		);
-
-		echo $this->Breadcrumbs->render();
-
-		?>
-
-		<main class="container-fluid">
-			<div class="container-content">
-				<?= $this->Flash->render() ?>
-				<?= $this->fetch('content') ?>
-			</div>
-		</main>
-
-		<footer>
-			<?= $this->Element('AdminTheme.Layout/Admin/footer') ?>
-		</footer>
 
 	</div>
+
+	<footer>
+		<?= $this->Element('AdminTheme.Layout/Admin/footer') ?>
+	</footer>
 
 	<?= $this->Html->script('/admin_theme/assets/dist/js/app') ?>
 	<?= $this->Html->script('/admin_theme/ckeditor/ckeditor') ?>
