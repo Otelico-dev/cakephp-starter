@@ -56,5 +56,6 @@ class AppView extends View
 		]);
 
 		$this->loadHelper('Svg');
+		$this->loadHelper('AdminTheme.Configure');
 	}
 }
