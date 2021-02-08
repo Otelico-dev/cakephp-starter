@@ -26,6 +26,7 @@ $theme-colors: (primary: #6872f9,
 @import 'layout/sidebar';
 @import 'layout/footer';
 @import 'layout/navigation';
+@import 'layout/dashboard';
 
 
 // Components
@@ -37,6 +38,10 @@ $theme-colors: (primary: #6872f9,
 // Modules
 @import 'login';
 @import 'ckeditor_filebrowser';
+
+
+// Plugins
+@import 'plugins/_selectize';
 
 // General
 @import 'app_forms';

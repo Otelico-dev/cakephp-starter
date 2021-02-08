@@ -31,7 +31,8 @@ form {
     margin-bottom: 0.5rem;
 }
 
-.datepicker.picker__input {
+.datepicker.picker__input,
+.timepicker.picker__input {
     cursor: pointer;
 
     &:disabled,
@@ -40,7 +41,9 @@ form {
     }
 }
 
-
+.input-group-append {
+    margin-bottom: 0;
+}
 
 .ck-editor__editable_inline {
     min-height: 300px;

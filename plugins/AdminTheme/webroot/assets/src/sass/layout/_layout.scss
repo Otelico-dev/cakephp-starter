@@ -1,7 +1,12 @@
 body {
+
+    background-color: #ebedef;
+}
+
+
+.container-main-content {
     display: flex;
     min-height: 100vh;
-    background-color: #ebedef;
 }
 
 .sidebar {
