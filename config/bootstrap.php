@@ -213,6 +213,13 @@ if (file_exists(__DIR__ . '/i18n.php')) {
 }
 
 /**
+ * App specific constants
+ */
+const UPLOADS_DIR_PREFIX = ROOT . DS . 'uploads';
+const IMAGE_CACHE_DIR_PREFIX = DS . 'image';
+const FILE_MANAGER_URL = '/admin_theme/ckeditor/plugins/filemanager/dialog.php?type=2&popup=1';
+
+/**
  * Load modules config
  */
 Configure::load('modules', 'default');
