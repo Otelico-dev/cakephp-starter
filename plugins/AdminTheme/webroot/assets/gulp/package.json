@@ -64,7 +64,7 @@
         "imagemin-pngquant": "^8.0.0",
         "imagemin-zopfli": "^6.0.0",
         "modularscale-sass": "^3.0.10",
-        "node-sass": "^4.13.1",
+        "node-sass": "^7.0.0",
         "through2": "^3.0.1"
     },
     "scripts": {
